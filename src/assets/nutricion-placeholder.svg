@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#15130f"/>
+      <stop offset="1" stop-color="#0a0908"/>
+    </linearGradient>
+    <radialGradient id="light" cx="0.5" cy="0.25" r="0.7">
+      <stop offset="0" stop-color="#3a3128" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#3a3128" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#light)"/>
+  <!-- tabla de cortar -->
+  <rect x="120" y="360" width="560" height="200" rx="14" fill="#3b2b1e"/>
+  <rect x="120" y="360" width="560" height="26" rx="14" fill="#4a3626"/>
+  <!-- vegetales abstractos -->
+  <circle cx="300" cy="360" r="58" fill="#c8321f"/>
+  <circle cx="285" cy="342" r="12" fill="#e6553f" opacity="0.6"/>
+  <ellipse cx="430" cy="372" rx="70" ry="40" fill="#2f7d32"/>
+  <ellipse cx="430" cy="360" rx="70" ry="26" fill="#3c9a40"/>
+  <circle cx="540" cy="366" r="46" fill="#e0821f"/>
+  <path d="M300 300 q10 -34 -8 -58 q30 14 30 46 z" fill="#3c9a40"/>
+  <rect x="200" y="392" width="150" height="8" rx="4" fill="#7a5a3c" opacity="0.5"/>
+</svg>

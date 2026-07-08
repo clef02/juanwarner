@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+/* ---- Sistema de diseño: paleta juanwagner.com (Tailwind v4) ---- */
+@theme {
+  --color-ink: #0e0e10; /* Negro tinta — texto principal / secciones oscuras */
+  --color-bone: #f6f3ec; /* Blanco hueso — fondo principal */
+  --color-brand: #c99a3b; /* Dorado bronce — acento principal (CTA, logros, patrocinios) */
+  --color-brand-bright: #d9ad52; /* Bronce claro — hover */
+  --color-carmin: #8b1e2e; /* Rojo carmín — acento secundario, con moderación */
+  --color-graphite: #54565b; /* Gris grafito — texto secundario / UI */
+  --color-muted: #a1a1aa; /* Gris claro — texto secundario sobre fondos oscuros */
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ---- Base ---- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bone);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Lenis (scroll suave) ---- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Fade para cambios de imagen/texto (showcase editorial) */
+@keyframes pl-fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(1.01);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Slider infinito (galería marquee) — la pista lleva las imágenes duplicadas */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* CTA — realce: glow dorado + brillo que barre al hover + leve elevación */
+.cta {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 26px -8px rgba(201, 154, 59, 0.55);
+  transition:
+    box-shadow 0.3s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+.cta:hover {
+  box-shadow: 0 14px 36px -6px rgba(201, 154, 59, 0.7);
+}
+.cta::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 55%;
+  transform: translateX(-220%) skewX(-20deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: transform 0.8s ease;
+  pointer-events: none;
+}
+.cta:hover::after {
+  transform: translateX(340%) skewX(-20deg);
+}
+
+/* Respeta la preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
