@@ -80,7 +80,7 @@ function Alianza() {
 
           <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 sm:px-10 lg:px-14">
             <div className="flex items-center gap-3">
-              <span className="h-px w-10 bg-brand" />
+              <span className="h-px w-10 bg-carmin" />
               <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
                 Patrocinio
               </span>
@@ -103,7 +103,7 @@ function Alianza() {
           <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-14 px-6 sm:px-10 lg:grid-cols-2 lg:gap-20 lg:px-14">
             <div>
               <div className="al-reveal flex items-center gap-3">
-                <span className="h-px w-10 bg-brand" />
+                <span className="h-px w-10 bg-carmin" />
                 <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
                   La alianza
                 </span>
@@ -126,7 +126,7 @@ function Alianza() {
                   className="cta group inline-flex -skew-x-12 items-center gap-2 bg-brand px-7 py-4 text-ink transition-colors duration-200 hover:bg-brand-bright"
                 >
                   <span className="flex skew-x-12 items-center gap-2 text-sm font-bold uppercase tracking-wider">
-                    Obtén {sponsor.discount.percent} de descuento
+                    Obtén tu descuento
                     <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                   </span>
                 </a>
@@ -162,11 +162,11 @@ function Alianza() {
               </div>
             </div>
 
-            <div className="al-reveal relative aspect-square overflow-hidden rounded-3xl border border-ink/5 shadow-2xl shadow-black/30">
+            <div className="al-reveal relative aspect-square overflow-hidden rounded-3xl border border-ink/5 bg-ink/[0.03] shadow-2xl shadow-black/30">
               <img
                 src={sponsor.introImg}
                 alt={sponsor.name}
-                className={`h-full w-full object-cover ${
+                className={`h-full w-full ${sponsor.introFit || 'object-cover'} ${
                   sponsor.introPos || 'object-top'
                 }`}
               />
@@ -179,7 +179,7 @@ function Alianza() {
           <section className="pt-12 pb-24 lg:pt-16 lg:pb-32">
             <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-14">
               <div className="al-reveal flex items-center gap-3">
-                <span className="h-px w-10 bg-brand" />
+                <span className="h-px w-10 bg-carmin" />
                 <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
                   Mi rutina
                 </span>
@@ -258,7 +258,9 @@ function Alianza() {
               {sponsor.products.map((p, i) => (
                 <a
                   key={p.name}
-                  href="#contacto"
+                  href={sponsor.discount.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`al-reveal group relative block aspect-[4/3] overflow-hidden rounded-xl border border-bone/10 sm:aspect-auto ${
                     BENTO[i % BENTO.length]
                   }`}
@@ -290,7 +292,7 @@ function Alianza() {
           <section className="overflow-hidden bg-bone py-16 lg:py-24">
             <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-14">
               <div className="al-reveal flex items-center gap-3">
-                <span className="h-px w-10 bg-brand" />
+                <span className="h-px w-10 bg-carmin" />
                 <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
                   Galería
                 </span>

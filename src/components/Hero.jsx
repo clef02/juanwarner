@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ArrowRight } from 'lucide-react'
 import { SOCIAL } from './SocialIcons'
+import { useContact } from './ContactModal'
 import gymBg from '../assets/gipnacio.jpg'
 import juanImg from '../assets/juan1.webp'
 import creadorImg from '../assets/creador.webp'
@@ -28,6 +29,7 @@ const CARDS = [
 
 function Hero() {
   const root = useRef(null)
+  const { openContact } = useContact()
 
   useGSAP(
     () => {
@@ -90,7 +92,7 @@ function Hero() {
             {/* Eyebrow */}
             <div className="mb-6 flex items-center gap-3 overflow-hidden">
               <span className="anim-eyebrow flex items-center gap-3">
-                <span className="h-px w-10 bg-brand" />
+                <span className="h-px w-10 bg-carmin" />
                 <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
                   Marca personal
                 </span>
@@ -120,7 +122,7 @@ function Hero() {
             {/* CTAs */}
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <a
-                href="#sobre-juan"
+                href="/quien-soy"
                 className="cta anim-cta group inline-flex -skew-x-12 items-center gap-2 border border-transparent bg-brand px-7 py-3.5 font-semibold uppercase tracking-wider text-ink transition-colors duration-200 hover:bg-brand-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-bright focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
               >
                 <span className="flex skew-x-12 items-center gap-2 text-sm">
@@ -128,14 +130,15 @@ function Hero() {
                   <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                 </span>
               </a>
-              <a
-                href="#trabaja-conmigo"
+              <button
+                type="button"
+                onClick={() => openContact('marca')}
                 className="anim-cta group inline-flex -skew-x-12 items-center border border-white/25 px-7 py-3.5 text-bone transition-colors duration-200 hover:border-white hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
               >
                 <span className="skew-x-12 text-sm font-semibold uppercase tracking-wider">
                   Trabaja conmigo
                 </span>
-              </a>
+              </button>
             </div>
 
             {/* Prueba social */}
@@ -152,6 +155,8 @@ function Hero() {
                   <a
                     key={name}
                     href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={name}
                     className="text-bone/70 transition-colors duration-200 hover:text-brand"
                   >

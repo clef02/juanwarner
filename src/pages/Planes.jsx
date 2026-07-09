@@ -16,6 +16,7 @@ import {
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import VideoCTA from '../components/VideoCTA'
+import { useContact } from '../components/ContactModal'
 import heroImg from '../assets/info2.webp'
 import encasaImg from '../assets/encasa.jpg'
 import entrenaImg from '../assets/entrena.jpg'
@@ -237,7 +238,7 @@ function EditorialShowcase({ data, dark = false, reverse = false }) {
       <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-14">
         {/* Etiqueta de sección */}
         <div className="pl-reveal flex items-center gap-3">
-          <span className="h-px w-10 bg-brand" />
+          <span className="h-px w-10 bg-carmin" />
           <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
             {data.eyebrow}
           </span>
@@ -342,6 +343,7 @@ function EditorialShowcase({ data, dark = false, reverse = false }) {
 
 function Planes() {
   const root = useRef(null)
+  const { openContact } = useContact()
   // Toggle de facturación — solo aplica a la tarjeta con varios precios (Programa completo)
   const [period, setPeriod] = useState(0)
   // Selector de divisa — aplica a los precios de todos los planes
@@ -390,7 +392,7 @@ function Planes() {
 
           <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 sm:px-10 lg:px-14">
             <div className="flex items-center gap-3">
-              <span className="h-px w-10 bg-brand" />
+              <span className="h-px w-10 bg-carmin" />
               <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
                 Planes y asesorías
               </span>
@@ -416,7 +418,7 @@ function Planes() {
           <div className="mx-auto max-w-[1800px] px-6 sm:px-10 lg:px-14">
             <div className="flex flex-col items-center text-center">
               <div className="pl-reveal flex items-center gap-3">
-                <span className="h-px w-10 bg-brand" />
+                <span className="h-px w-10 bg-carmin" />
                 <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
                   Planes y precios
                 </span>
@@ -568,8 +570,9 @@ function Planes() {
                   </div>
 
                   {/* CTA — al fondo, alineado en las tres tarjetas */}
-                  <a
-                    href="#contacto"
+                  <button
+                    type="button"
+                    onClick={() => openContact('asesoria')}
                     className={`cta mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-center text-sm font-semibold uppercase tracking-wider transition-colors ${
                       p.featured
                         ? 'bg-ink text-bone hover:bg-ink/85'
@@ -577,7 +580,7 @@ function Planes() {
                     }`}
                   >
                     {p.cta}
-                  </a>
+                  </button>
                 </article>
               ))}
             </div>
@@ -591,7 +594,7 @@ function Planes() {
               {/* Título + descripción — izquierda (fijo) */}
               <div className="lg:sticky lg:top-28 lg:w-[30%] lg:self-start">
                 <div className="pl-reveal flex items-center gap-3">
-                  <span className="h-px w-10 bg-brand" />
+                  <span className="h-px w-10 bg-carmin" />
                   <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
                     Dudas
                   </span>
@@ -604,13 +607,14 @@ function Planes() {
                   cómo empezar. Si no está la tuya, escríbeme y con gusto te
                   ayudo.
                 </p>
-                <a
-                  href="#contacto"
+                <button
+                  type="button"
+                  onClick={() => openContact('general')}
                   className="pl-reveal group mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:text-brand-bright"
                 >
                   Escríbeme
                   <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-                </a>
+                </button>
               </div>
 
               {/* Acordeón — derecha */}

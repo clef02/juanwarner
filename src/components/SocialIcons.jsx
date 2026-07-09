@@ -18,26 +18,36 @@ export const TiktokIcon = (props) => (
   </svg>
 )
 
+export const FacebookIcon = (props) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+    <path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.01 1.79-4.68 4.53-4.68 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.49 0-1.96.93-1.96 1.87v2.26h3.32l-.53 3.49h-2.79V24C19.61 23.09 24 18.1 24 12.07Z" />
+  </svg>
+)
+
+// Redes reales de Juan Wagner. Se abren en pestaña nueva desde el hero, footer y facetas.
 export const SOCIAL = [
   {
     name: 'Instagram',
-    handle: '@juanwagner',
-    followers: '12K',
-    href: '#',
+    handle: '@juanwagner150',
+    href: 'https://www.instagram.com/juanwagner150/',
     Icon: InstagramIcon,
   },
   {
     name: 'TikTok',
-    handle: '@juanwagner',
-    followers: '6.5K',
-    href: '#',
+    handle: '@juanwagner_',
+    href: 'https://www.tiktok.com/@juanwagner_',
     Icon: TiktokIcon,
   },
   {
     name: 'YouTube',
     handle: 'Juan Wagner',
-    followers: '1.8K',
-    href: '#',
+    href: 'https://www.youtube.com/@JuanWagner_',
     Icon: YoutubeIcon,
+  },
+  {
+    name: 'Facebook',
+    handle: 'Juan Wagner',
+    href: 'https://www.facebook.com/people/Juan-Wagner/100087298064954',
+    Icon: FacebookIcon,
   },
 ]

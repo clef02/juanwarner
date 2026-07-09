@@ -102,6 +102,8 @@ function Footer() {
               <a
                 key={name}
                 href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={name}
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-graphite/60 text-bone transition-colors duration-200 hover:border-brand hover:bg-brand hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
               >

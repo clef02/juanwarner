@@ -68,7 +68,7 @@ function MarcasProyectos() {
         {/* Cabecera */}
         <div className="max-w-2xl">
           <div className="mp-head flex items-center gap-3">
-            <span className="h-px w-10 bg-brand" />
+            <span className="h-px w-10 bg-carmin" />
             <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
               Marcas
             </span>

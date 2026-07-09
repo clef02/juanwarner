@@ -93,7 +93,7 @@ function Filosofia() {
         {/* Cabecera */}
         <div className="flex flex-col items-center text-center">
           <div className="fi-head flex items-center gap-3">
-            <span className="h-px w-10 bg-brand" />
+            <span className="h-px w-10 bg-carmin" />
             <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
               Mi esencia
             </span>
@@ -143,7 +143,7 @@ function Filosofia() {
         {/* Valores */}
         <div className="fi-values mt-8 md:mt-8">
           <div className="fi-head flex items-center gap-3">
-            <span className="h-px w-10 bg-brand" />
+            <span className="h-px w-10 bg-carmin" />
             <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
               Valores
             </span>

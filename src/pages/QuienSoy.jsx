@@ -48,7 +48,7 @@ function QuienSoy() {
 
           <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 sm:px-10 lg:px-14">
             <div className="qs-reveal flex items-center gap-3">
-              <span className="h-px w-10 bg-brand" />
+              <span className="h-px w-10 bg-carmin" />
               <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
                 Quién soy
               </span>
@@ -68,7 +68,7 @@ function QuienSoy() {
         <section className="bg-ink py-24 text-bone lg:py-32">
           <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-14">
             <div className="qs-reveal flex items-center gap-3">
-              <span className="h-px w-10 bg-brand" />
+              <span className="h-px w-10 bg-carmin" />
               <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
                 Mi historia
               </span>

@@ -1,5 +1,12 @@
-import info1 from '../assets/info1.webp'
-import info2 from '../assets/info2.webp'
+import youngla1 from '../assets/youngla1.webp'
+import youngla11 from '../assets/youngla1.1.webp'
+import youngla3 from '../assets/youngla3.webp'
+import younglaGale from '../assets/younglaGale.webp'
+import younglaGale2 from '../assets/younglaGale2.webp'
+import younglaGale3 from '../assets/younglaGale3.webp'
+import younglaGale4 from '../assets/younglaGale4.webp'
+import younglaGale5 from '../assets/younglaGale5.webp'
+import galeri2 from '../assets/galeri2.webp'
 import youngLaLogo from '../assets/youngla.png'
 import dragonLogo from '../assets/dragon.png'
 import dragonImg from '../assets/dragon.webp'
@@ -18,22 +25,24 @@ export const SPONSORS = [
     name: 'YoungLA',
     category: 'Ropa deportiva y lifestyle',
     logo: youngLaLogo,
-    heroImg: info1,
-    introImg: info2,
+    heroImg: younglaGale2,
+    heroPos: 'object-[center_30%]',
+    introImg: younglaGale,
+    introPos: 'object-center',
     introHeading: 'La marca número uno en fitness y lifestyle.',
     introParagraphs: [
       'YoungLA es la marca de ropa número uno en fitness y lifestyle. En 2024 abrieron sus puertas para construir algo a largo plazo conmigo.',
       'Desde entonces hemos viajado juntos a eventos como el Arnold Sports, Fexpocruz y el Block Party de Miami. Sigo usando su ropa no solo para entrenar, sino también para el día a día, porque combina calidad, estilo y comodidad.',
     ],
     discount: {
-      percent: '15%',
       code: 'JUANWAGNER',
       url: 'https://www.youngla.com/discount/JUANWAGNER',
     },
     products: [
-      { img: info2, name: 'Colección entrenamiento', pos: 'object-top' },
-      { img: info1, name: 'Hoodie oversized', pos: 'object-center' },
+      { img: youngla1, name: 'Colección entrenamiento', pos: 'object-[center_30%]' },
+      { img: youngla11, name: 'Hoodie oversized', pos: 'object-[center_30%]' },
     ],
+    gallery: [youngla3, younglaGale3, younglaGale4, younglaGale5, galeri2],
   },
   {
     slug: 'dragon-pharma',
@@ -79,7 +88,6 @@ export const SPONSORS = [
     outro:
       'En Dragon Pharma vas a encontrar proteínas, aminoácidos, creatinas, pre-entrenos y toda una línea de vitaminas y suplementos pensados para acompañarte tanto dentro como fuera del gimnasio.',
     discount: {
-      percent: '25%',
       code: 'JUANWAGNER',
       url: 'https://dragonpharmalabs.com/JUANWAGNER',
     },
@@ -87,7 +95,7 @@ export const SPONSORS = [
       { img: galeriDra2, name: 'Proteína', pos: 'object-[center_72%]' },
       { img: galeriDra5, name: 'Pre-entreno', pos: 'object-center' },
     ],
-    gallery: [galeriDra1, galeriDra3],
+    gallery: [galeriDra1, galeriDra2, galeriDra3, galeriDra5, dragonfarma],
   },
 ]
 

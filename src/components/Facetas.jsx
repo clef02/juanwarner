@@ -115,7 +115,7 @@ function Facetas() {
       <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-14 xl:px-20">
         {/* Eyebrow */}
         <div className="fac-eyebrow flex items-center justify-center gap-3">
-          <span className="h-px w-10 bg-brand" />
+          <span className="h-px w-10 bg-carmin" />
           <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
             Mis facetas
           </span>

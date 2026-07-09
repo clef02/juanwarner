@@ -42,7 +42,7 @@ function About() {
         {/* ---- Columna izquierda: texto + galería ---- */}
         <div className="order-2 lg:order-1">
           <div className="about-reveal mb-6 flex items-center gap-3">
-            <span className="h-px w-10 bg-brand" />
+            <span className="h-px w-10 bg-carmin" />
             <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
               Quién es Juan
             </span>

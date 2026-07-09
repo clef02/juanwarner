@@ -70,7 +70,7 @@ function Sponsors() {
             <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
               <div>
                 <div className="flex items-center gap-3">
-                  <span className="h-px w-10 bg-brand" />
+                  <span className="h-px w-10 bg-carmin" />
                   <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
                     Para marcas
                   </span>
@@ -102,7 +102,7 @@ function Sponsors() {
           <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-14 px-6 sm:px-10 lg:grid-cols-2 lg:gap-20 lg:px-14">
             <div>
               <div className="sp-reveal flex items-center gap-3">
-                <span className="h-px w-10 bg-brand" />
+                <span className="h-px w-10 bg-carmin" />
                 <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
                   Por qué yo
                 </span>
@@ -140,7 +140,7 @@ function Sponsors() {
           <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-14">
             <div className="flex flex-col items-center text-center">
               <div className="sp-reveal flex items-center gap-3">
-                <span className="h-px w-10 bg-brand" />
+                <span className="h-px w-10 bg-carmin" />
                 <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
                   Marcas aliadas
                 </span>
@@ -176,7 +176,7 @@ function Sponsors() {
         <section id="media-kit" className="scroll-mt-24 py-24 lg:py-32">
           <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-14">
             <div className="sp-reveal flex items-center gap-3">
-              <span className="h-px w-10 bg-brand" />
+              <span className="h-px w-10 bg-carmin" />
               <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
                 Media kit
               </span>

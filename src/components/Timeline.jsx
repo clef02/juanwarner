@@ -131,7 +131,7 @@ function Timeline() {
         {/* Cabecera */}
         <div className="flex flex-col items-center text-center">
           <div className="tl-head flex items-center gap-3">
-            <span className="h-px w-10 bg-brand" />
+            <span className="h-px w-10 bg-carmin" />
             <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
               Trayectoria
             </span>
