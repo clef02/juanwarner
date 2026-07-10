@@ -9,7 +9,6 @@ const WEB3FORMS_ACCESS_KEY = 'TU_ACCESS_KEY_DE_WEB3FORMS'
 // Asuntos según el botón que abre el modal
 const TOPICS = {
   marca: 'Colaboración de marca',
-  asesoria: 'Asesoría / planes',
   general: 'Consulta general',
 }
 

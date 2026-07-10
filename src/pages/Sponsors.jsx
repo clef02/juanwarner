@@ -6,7 +6,7 @@ import { BadgeCheck, Download } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { SPONSORS } from '../data/sponsors'
-import heroImg from '../assets/info2.webp'
+import heroImg from '../assets/creador.webp'
 import introImg from '../assets/info1.webp'
 import kitImg from '../assets/juan2.png'
 import mediaKitPdf from '../assets/JuanWagner MediaKit 2026.pdf'
@@ -61,7 +61,7 @@ function Sponsors() {
           <img
             src={heroImg}
             alt="Juan Wagner"
-            className="absolute inset-0 h-full w-full object-cover object-[center_25%]"
+            className="absolute inset-0 h-full w-full object-cover object-[center_45%]"
           />
           <div className="absolute inset-0 bg-ink/55" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
@@ -85,7 +85,8 @@ function Sponsors() {
               </div>
 
               <a
-                href="#media-kit"
+                href={mediaKitPdf}
+                download="Juan Wagner - Media Kit 2026.pdf"
                 className="cta group inline-flex w-max -skew-x-12 items-center gap-2 bg-brand px-8 py-4 text-ink transition-colors duration-200 hover:bg-brand-bright"
               >
                 <span className="flex skew-x-12 items-center gap-2 text-sm font-semibold uppercase tracking-wider">

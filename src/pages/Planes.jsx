@@ -569,10 +569,10 @@ function Planes() {
                     </ul>
                   </div>
 
-                  {/* CTA — al fondo, alineado en las tres tarjetas */}
+                  {/* CTA — al fondo, alineado en las tres tarjetas
+                      TODO: conectar al checkout/compra cuando esté listo */}
                   <button
                     type="button"
-                    onClick={() => openContact('asesoria')}
                     className={`cta mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-center text-sm font-semibold uppercase tracking-wider transition-colors ${
                       p.featured
                         ? 'bg-ink text-bone hover:bg-ink/85'

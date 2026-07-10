@@ -92,12 +92,12 @@ function Footer() {
         {/* Barra inferior */}
         <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-xs text-muted">
+            <p className="text-center text-xs text-muted sm:text-left">
               © 2026 Juan Wagner. Todos los derechos reservados.
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex w-full items-center justify-center gap-3 sm:w-auto sm:justify-end">
             {SOCIAL.map(({ Icon, name, href }) => (
               <a
                 key={name}

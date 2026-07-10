@@ -78,7 +78,7 @@ function VideoCTA() {
             <div className="cta-anim flex flex-wrap gap-4 lg:justify-end">
               <button
                 type="button"
-                onClick={() => openContact('asesoria')}
+                onClick={() => openContact('general')}
                 className="cta group inline-flex -skew-x-12 items-center gap-2 bg-brand px-8 py-4 text-ink transition-colors duration-200 hover:bg-brand-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-bright focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
               >
                 <span className="flex skew-x-12 items-center gap-2 text-sm font-semibold uppercase tracking-wider">
@@ -86,14 +86,6 @@ function VideoCTA() {
                   <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                 </span>
               </button>
-              <a
-                href="/planes"
-                className="group inline-flex -skew-x-12 items-center border border-bone/30 px-8 py-4 text-bone transition-colors duration-200 hover:border-bone hover:bg-bone/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
-              >
-                <span className="skew-x-12 text-sm font-semibold uppercase tracking-wider">
-                  Ver planes
-                </span>
-              </a>
             </div>
           </div>
         </div>

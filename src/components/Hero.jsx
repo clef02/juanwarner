@@ -73,103 +73,104 @@ function Hero() {
         <div className="absolute inset-0 bg-ink/45" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/65 to-ink/20" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-transparent to-transparent" />
+        {/* Móvil: oscurece la parte superior para leer el texto sobre Juan centrado */}
+        <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/45 to-transparent sm:hidden" />
       </div>
 
       {/* ---- Juan (recorte con fondo transparente, centrado) ---- */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] flex translate-x-[9%] translate-y-[4svh] justify-center sm:translate-y-[9svh] lg:translate-y-[14svh]">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] flex translate-x-0 translate-y-0 justify-center sm:translate-x-[9%] sm:translate-y-[9svh] lg:translate-y-[14svh]">
         <img
           src={juanImg}
           alt="Juan Wagner, coach y creador de contenido"
-          className="hero-juan h-[60svh] w-auto max-w-none drop-shadow-2xl sm:h-[86svh] lg:h-[104svh]"
+          className="hero-juan h-[70svh] w-auto max-w-none drop-shadow-2xl sm:h-[86svh] lg:h-[104svh]"
         />
       </div>
 
       {/* ---- Contenedor ---- */}
-      <div className="relative z-10 flex h-full w-full flex-col justify-center px-6 sm:px-10 lg:px-14 xl:px-20">
-        {/* Contenido principal (centrado en el alto completo) */}
-        <div className="py-4">
-          <div className="max-w-2xl">
-            {/* Eyebrow */}
-            <div className="mb-6 flex items-center gap-3 overflow-hidden">
-              <span className="anim-eyebrow flex items-center gap-3">
-                <span className="h-px w-10 bg-carmin" />
-                <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
-                  Marca personal
-                </span>
+      <div className="relative z-10 flex h-full w-full flex-col items-center justify-between px-6 pb-10 pt-24 text-center sm:items-start sm:justify-center sm:px-10 sm:pb-0 sm:pt-0 sm:text-left lg:px-14 xl:px-20">
+        {/* Arriba: eyebrow + título + descripción */}
+        <div className="w-full max-w-2xl sm:w-auto">
+          {/* Eyebrow */}
+          <div className="mb-5 flex items-center justify-center gap-3 overflow-hidden sm:mb-6 sm:justify-start">
+            <span className="anim-eyebrow flex items-center gap-3">
+              <span className="h-px w-10 bg-carmin" />
+              <span className="text-xs font-semibold uppercase tracking-[0.32em] text-brand">
+                Marca personal
               </span>
-            </div>
+            </span>
+          </div>
 
-            {/* Titular */}
-            <h1 className="font-display w-max max-w-none text-[clamp(3rem,9vw,9rem)] font-bold uppercase leading-[0.9] tracking-tight">
-              <span className="block overflow-hidden">
-                <span className="anim-line block whitespace-nowrap">Juan</span>
-              </span>
-              <span className="block overflow-hidden">
-                <span className="anim-line block whitespace-nowrap">
-                  Wagner
-                </span>
-              </span>
-            </h1>
+          {/* Titular — una línea en móvil, dos en desktop */}
+          <h1 className="font-display text-[2.25rem] font-bold uppercase leading-none tracking-tight sm:w-max sm:max-w-none sm:text-[clamp(3rem,9vw,9rem)] sm:leading-[0.9]">
+            <span className="inline-block overflow-hidden sm:block">
+              <span className="anim-line block whitespace-nowrap">Juan&nbsp;</span>
+            </span>
+            <span className="inline-block overflow-hidden sm:block">
+              <span className="anim-line block whitespace-nowrap">Wagner</span>
+            </span>
+          </h1>
 
-            {/* Subtítulo */}
-            <p className="anim-sub mt-6 max-w-md text-sm font-medium uppercase leading-relaxed tracking-wide text-muted sm:text-base">
-              Entrenador, creador de contenido y embajador de marca.{' '}
-              <span className="font-semibold text-brand">
-                Todo lo que soy, en un solo lugar.
-              </span>
-            </p>
+          {/* Subtítulo */}
+          <p className="anim-sub mx-auto mt-5 max-w-md text-sm font-medium uppercase leading-relaxed tracking-wide text-muted sm:mx-0 sm:mt-6 sm:text-base">
+            Entrenador, creador de contenido y embajador de marca.{' '}
+            <span className="font-semibold text-brand">
+              Todo lo que soy, en un solo lugar.
+            </span>
+          </p>
+        </div>
 
-            {/* CTAs */}
-            <div className="mt-9 flex flex-wrap items-center gap-4">
-              <a
-                href="/quien-soy"
-                className="cta anim-cta group inline-flex -skew-x-12 items-center gap-2 border border-transparent bg-brand px-7 py-3.5 font-semibold uppercase tracking-wider text-ink transition-colors duration-200 hover:bg-brand-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-bright focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
-              >
-                <span className="flex skew-x-12 items-center gap-2 text-sm">
-                  Conóceme
-                  <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-                </span>
-              </a>
-              <button
-                type="button"
-                onClick={() => openContact('marca')}
-                className="anim-cta group inline-flex -skew-x-12 items-center border border-white/25 px-7 py-3.5 text-bone transition-colors duration-200 hover:border-white hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
-              >
-                <span className="skew-x-12 text-sm font-semibold uppercase tracking-wider">
-                  Trabaja conmigo
-                </span>
-              </button>
-            </div>
-
-            {/* Prueba social */}
-            <div className="anim-proof mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-              <span className="font-semibold uppercase tracking-wider">
-                +3M <span className="text-muted">seguidores</span>
+        {/* Abajo: CTAs (en una fila) + redes */}
+        <div className="w-full max-w-2xl sm:mt-9 sm:w-auto">
+          {/* CTAs */}
+          <div className="flex items-center justify-center gap-3 sm:justify-start sm:gap-4">
+            <a
+              href="/quien-soy"
+              className="cta anim-cta group inline-flex -skew-x-12 items-center gap-2 border border-transparent bg-brand px-5 py-3 font-semibold uppercase tracking-wider text-ink transition-colors duration-200 hover:bg-brand-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-bright focus-visible:ring-offset-2 focus-visible:ring-offset-ink sm:px-7 sm:py-3.5"
+            >
+              <span className="flex skew-x-12 items-center gap-2 text-xs sm:text-sm">
+                Conóceme
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
               </span>
-              <span
-                className="hidden h-4 w-px bg-white/20 sm:block"
-                aria-hidden="true"
-              />
-              <div className="flex items-center gap-3">
-                {SOCIAL.map(({ name, href, Icon }) => (
-                  <a
-                    key={name}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={name}
-                    className="text-bone/70 transition-colors duration-200 hover:text-brand"
-                  >
-                    <Icon className="h-[1.15rem] w-[1.15rem]" />
-                  </a>
-                ))}
-              </div>
+            </a>
+            <button
+              type="button"
+              onClick={() => openContact('marca')}
+              className="anim-cta group inline-flex -skew-x-12 items-center border border-white/25 px-5 py-3 text-bone transition-colors duration-200 hover:border-white hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink sm:px-7 sm:py-3.5"
+            >
+              <span className="skew-x-12 text-xs font-semibold uppercase tracking-wider sm:text-sm">
+                Trabaja conmigo
+              </span>
+            </button>
+          </div>
+
+          {/* Prueba social */}
+          <div className="anim-proof mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm sm:mt-8 sm:justify-start sm:gap-x-6">
+            <span className="font-semibold uppercase tracking-wider">
+              +3M <span className="text-muted">seguidores</span>
+            </span>
+            <span
+              className="hidden h-4 w-px bg-white/20 sm:block"
+              aria-hidden="true"
+            />
+            <div className="flex items-center gap-3">
+              {SOCIAL.map(({ name, href, Icon }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={name}
+                  className="text-bone/70 transition-colors duration-200 hover:text-brand"
+                >
+                  <Icon className="h-[1.15rem] w-[1.15rem]" />
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Tarjetas flotantes abajo a la derecha (accesos a facetas) */}
-        <div className="absolute bottom-6 right-6 z-20 sm:right-10 lg:right-14 xl:right-20">
+        {/* Tarjetas flotantes abajo a la derecha (accesos a facetas) — ocultas en móvil */}
+        <div className="absolute bottom-6 right-6 z-20 hidden sm:block sm:right-10 lg:right-14 xl:right-20">
           <div className="flex items-end gap-4">
             {CARDS.map(({ img, title, action, href, pos }, i) => (
               <a
