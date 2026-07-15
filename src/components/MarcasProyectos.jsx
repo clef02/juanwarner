@@ -14,7 +14,7 @@ const MARCAS = [
   {
     name: 'YoungLA',
     logo: youngLaLogo,
-    desc: 'Ropa deportiva y lifestyle con la que entreno cada día.',
+    desc: 'Ropa deportiva y lifestyle con la que entreno cada día',
     img: youngLaImg,
     pos: 'object-[center_30%]',
     href: '/alianzas/youngla',
@@ -22,7 +22,7 @@ const MARCAS = [
   {
     name: 'Dragon Pharma',
     logo: dragonLogo,
-    desc: 'Suplementación deportiva de calidad para potenciar tus resultados.',
+    desc: 'Suplementación deportiva de calidad para potenciar tus resultados',
     img: dragonImg,
     pos: 'object-center',
     href: '/alianzas/dragon-pharma',

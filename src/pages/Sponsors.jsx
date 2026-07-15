@@ -80,7 +80,7 @@ function Sponsors() {
                 </h1>
                 <p className="mt-5 max-w-xl text-sm uppercase tracking-wide text-bone/70 sm:text-base">
                   Conecta con una comunidad fiel de +1M de personas apasionadas
-                  por el fitness y el estilo de vida.
+                  por el fitness y el estilo de vida
                 </p>
               </div>
 

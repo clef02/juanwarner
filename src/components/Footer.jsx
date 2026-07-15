@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, LogIn } from 'lucide-react'
 import logo from '../assets/jw-logo.png'
 import { SOCIAL } from './SocialIcons'
 
@@ -91,10 +91,20 @@ function Footer() {
 
         {/* Barra inferior */}
         <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <div>
+          <div className="flex flex-col items-center gap-3 sm:items-start">
             <p className="text-center text-xs text-muted sm:text-left">
               © 2026 Juan Wagner. Todos los derechos reservados.
             </p>
+            {/* Acceso discreto al área de miembros */}
+            <a
+              href="https://members.juanwagner.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-muted transition-colors duration-200 hover:text-brand"
+            >
+              <LogIn className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+              Área de miembros
+            </a>
           </div>
 
           <div className="flex w-full items-center justify-center gap-3 sm:w-auto sm:justify-end">

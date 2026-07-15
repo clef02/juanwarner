@@ -25,28 +25,28 @@ const VALUES = [
   {
     icon: Dumbbell,
     name: 'Disciplina',
-    desc: 'El trabajo diario le gana al talento.',
+    desc: 'El trabajo diario le gana al talento',
   },
-  { icon: Fingerprint, name: 'Autenticidad', desc: 'Ser siempre uno mismo.' },
+  { icon: Fingerprint, name: 'Autenticidad', desc: 'Ser siempre uno mismo' },
   {
     icon: Flag,
     name: 'Propósito',
-    desc: 'Cada proyecto tiene una razón clara de existir.',
+    desc: 'Cada proyecto tiene una razón clara de existir',
   },
   {
     icon: Eye,
     name: 'Honestidad',
-    desc: 'Transparencia en lo que se hace y en el proceso.',
+    desc: 'Transparencia en lo que se hace y en el proceso',
   },
   {
     icon: Award,
     name: 'Excelencia',
-    desc: 'Estándares altos en todos los frentes, no solo en el deporte.',
+    desc: 'Estándares altos en todos los frentes, no solo en el deporte',
   },
   {
     icon: Users,
     name: 'Impacto social',
-    desc: 'Dejar todo mejor de lo que lo encontré.',
+    desc: 'Dejar todo mejor de lo que lo encontré',
   },
 ]
 

@@ -13,21 +13,21 @@ gsap.registerPlugin(useGSAP, ScrollTrigger)
 const FACETAS = [
   {
     title: 'Coach',
-    desc: 'Planes de entrenamiento y nutrición hechos a tu medida.',
+    desc: 'Planes de entrenamiento y nutrición hechos a tu medida',
     img: coachImg,
     pos: 'object-[center_28%]',
     href: '/planes',
   },
   {
     title: 'Creador',
-    desc: 'Contenido y una comunidad que crece cada día.',
+    desc: 'Contenido y una comunidad que crece cada día',
     img: info1,
     pos: 'object-center',
     social: true,
   },
   {
     title: 'Actor',
-    desc: 'Mi próximo capítulo: cine y actuación.',
+    desc: 'Mi próximo capítulo: cine y actuación',
     img: gipnacio,
     pos: 'object-center',
     href: '#',

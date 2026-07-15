@@ -112,9 +112,9 @@ function Hero() {
 
           {/* Subtítulo */}
           <p className="anim-sub mx-auto mt-5 max-w-md text-sm font-medium uppercase leading-relaxed tracking-wide text-muted sm:mx-0 sm:mt-6 sm:text-base">
-            Entrenador, creador de contenido y embajador de marca.{' '}
+            Entrenador, creador de contenido y embajador de marca ·{' '}
             <span className="font-semibold text-brand">
-              Todo lo que soy, en un solo lugar.
+              Todo lo que soy, en un solo lugar
             </span>
           </p>
         </div>

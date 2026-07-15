@@ -29,7 +29,7 @@ export const SPONSORS = [
     heroPos: 'object-[center_30%]',
     introImg: younglaGale,
     introPos: 'object-center',
-    introHeading: 'La marca número uno en fitness y lifestyle.',
+    introHeading: 'La marca número uno en fitness y lifestyle',
     introParagraphs: [
       'YoungLA es la marca de ropa número uno en fitness y lifestyle. En 2024 abrieron sus puertas para construir algo a largo plazo conmigo.',
       'Desde entonces hemos viajado juntos a eventos como el Arnold Sports, Fexpocruz y el Block Party de Miami. Sigo usando su ropa no solo para entrenar, sino también para el día a día, porque combina calidad, estilo y comodidad.',
@@ -53,7 +53,7 @@ export const SPONSORS = [
     heroPos: 'object-[center_35%]',
     introImg: dragonImg,
     introPos: 'object-center',
-    introHeading: 'Mi primer gran patrocinio.',
+    introHeading: 'Mi primer gran patrocinio',
     introParagraphs: [
       'Dragon Pharma fue mi primer patrocinio grande, cuando apenas estaba arrancando como atleta y creador de contenido.',
       'Desde ese momento no he dejado de crecer con ellos, no solo a nivel personal, sino físicamente: el cambio y progreso que he tenido son la mejor prueba de sus productos.',

@@ -19,7 +19,7 @@ import VideoCTA from '../components/VideoCTA'
 import { useContact } from '../components/ContactModal'
 import heroImg from '../assets/info2.webp'
 import encasaImg from '../assets/encasa.jpg'
-import entrenaImg from '../assets/entrena.jpg'
+import entrenaImg from '../assets/entrena.webp'
 import controlImg from '../assets/control.jpg'
 import comerImg from '../assets/comer.jpg'
 import listaImg from '../assets/listamercado.jpg'
@@ -122,10 +122,9 @@ const NUTRITION_FEATURES = [
 const CURRENCIES = [
   { code: 'USD', symbol: '$' },
   { code: 'MXN', symbol: '$' },
-  { code: 'COP', symbol: '$' },
-  { code: 'EUR', symbol: '€' },
   { code: 'ARS', symbol: '$' },
-  { code: 'PEN', symbol: 'S/' },
+  { code: 'CLP', symbol: '$' },
+  { code: 'COP', symbol: '$' },
 ]
 
 // ⚠️ PRECIOS LOCALES — DEFÍNELOS TÚ.
@@ -143,12 +142,27 @@ const PLANS = [
       {
         label: 'Trimestral',
         note: 'cada 3 meses',
-        amount: { USD: '110', MXN: '1.990', COP: '440.000', EUR: '99', ARS: '110.000', PEN: '410' },
+        amount: { USD: '110', MXN: '3.190', ARS: '188.999', CLP: '154.999', COP: '687.999' },
+        // El enlace de checkout depende de la divisa; si no hay uno propio, cae a USD.
+        url: {
+          USD: 'https://members.juanwagner.com/subscribe/90f7ff73-d467-4bf0-9421-82747eb37256/sign-up',
+          MXN: 'https://members.juanwagner.com/subscribe/233b3be8-b687-4b9c-8ffc-faa5355c8ba0/sign-up',
+          ARS: 'https://members.juanwagner.com/subscribe/e12b1b69-b71d-4472-887a-7feff2bd18c0/sign-up',
+          CLP: 'https://members.juanwagner.com/subscribe/28ac5bc1-b699-4922-a87d-efe0db6d72d1/sign-up',
+          COP: 'https://members.juanwagner.com/subscribe/cfa4f985-63ae-4d09-bad9-83f780a95c8d/sign-up',
+        },
       },
       {
         label: 'Mensual',
         note: 'al mes',
-        amount: { USD: '49', MXN: '899', COP: '195.000', EUR: '45', ARS: '49.000', PEN: '185' },
+        amount: { USD: '45', MXN: '802', ARS: '63.000', CLP: '42.000', COP: '165.000' },
+        url: {
+          USD: 'https://members.juanwagner.com/subscribe/0a1d2cc7-6bf9-43ff-8442-a0b6df9923da/sign-up',
+          MXN: 'https://members.juanwagner.com/subscribe/15fe2ea9-4e4a-4545-b685-197e0a6002da/sign-up',
+          ARS: 'https://members.juanwagner.com/subscribe/8768acc8-6622-4c50-a059-9966e27130d3/sign-up',
+          CLP: 'https://members.juanwagner.com/subscribe/746551f4-d55a-4b02-8a8a-d8c23c39c0f1/sign-up',
+          COP: 'https://members.juanwagner.com/subscribe/a8ed3bc8-3d38-4c92-872a-9c8f3e0c4a71/sign-up',
+        },
       },
     ],
     features: FULL_FEATURES,
@@ -164,12 +178,14 @@ const PLANS = [
       {
         label: '',
         note: 'Facturación mensual',
-        amount: { USD: '30', MXN: '549', COP: '120.000', EUR: '29', ARS: '30.000', PEN: '115' },
+        // Estos programas se venden solo en USD: $30 en cualquier divisa seleccionada.
+        amount: { USD: '30' },
       },
     ],
     features: TRAINING_FEATURES,
     cta: '¡Quiero empezar ahora!',
     featured: false,
+    url: 'https://members.juanwagner.com/subscribe/c77a494f-cb10-4390-a669-fa0434946402/sign-up',
   },
   {
     id: 'nutricion',
@@ -179,12 +195,14 @@ const PLANS = [
       {
         label: '',
         note: 'Facturación mensual',
-        amount: { USD: '30', MXN: '549', COP: '120.000', EUR: '29', ARS: '30.000', PEN: '115' },
+        // Estos programas se venden solo en USD: $30 en cualquier divisa seleccionada.
+        amount: { USD: '30' },
       },
     ],
     features: NUTRITION_FEATURES,
     cta: '¡Quiero empezar ahora!',
     featured: false,
+    url: 'https://members.juanwagner.com/subscribe/7afb94e1-86b8-4ad9-9fb9-b9f0162e7185/sign-up',
   },
 ]
 
@@ -341,11 +359,21 @@ function EditorialShowcase({ data, dark = false, reverse = false }) {
   )
 }
 
+// Resuelve el enlace de checkout según la divisa activa.
+// `url` puede ser un string (mismo enlace para todas las divisas) o un objeto
+// por divisa; si la divisa activa no tiene enlace propio, cae al de USD.
+function resolveCheckoutUrl(url, currency) {
+  if (!url) return undefined
+  if (typeof url === 'string') return url
+  return url[currency] ?? url.USD
+}
+
 function Planes() {
   const root = useRef(null)
   const { openContact } = useContact()
   // Toggle de facturación — solo aplica a la tarjeta con varios precios (Programa completo)
-  const [period, setPeriod] = useState(0)
+  // Arranca en Mensual (índice 1 del array de precios: [Trimestral, Mensual]).
+  const [period, setPeriod] = useState(1)
   // Selector de divisa — aplica a los precios de todos los planes
   const [currency, setCurrency] = useState(CURRENCIES[0].code)
   const symbol =
@@ -402,7 +430,7 @@ function Planes() {
             </h1>
             <p className="mt-5 max-w-xl text-sm uppercase tracking-wide text-bone/70 sm:text-base">
               Entrena conmigo con un plan hecho para tu cuerpo, tu ritmo y tus
-              metas.
+              metas
             </p>
           </div>
         </section>
@@ -453,7 +481,13 @@ function Planes() {
             </div>
 
             <div className="pl-cards mt-16 grid grid-cols-1 items-center gap-8 md:grid-cols-3 lg:mt-20">
-              {PLANS.map((p) => (
+              {PLANS.map((p) => {
+                // Enlace de compra: en el Completo depende del período (toggle);
+                // en los demás, el `url` único del plan.
+                const rawUrl =
+                  p.prices.length > 1 ? p.prices[period].url : p.url
+                const ctaUrl = resolveCheckoutUrl(rawUrl, currency)
+                return (
                 <article
                   key={p.id}
                   className={`pl-card flex h-full flex-col rounded-3xl p-8 lg:p-10 ${
@@ -529,8 +563,14 @@ function Planes() {
                           )}
                           <span className="font-display text-5xl font-bold leading-none lg:text-6xl">
                             {symbol}
-                            {pr.amount[currency]}
+                            {pr.amount[currency] ?? pr.amount.USD}
                           </span>
+                          {/* Etiqueta USD para precios que solo existen en dólares */}
+                          {Object.keys(pr.amount).length === 1 && (
+                            <span className="text-xs font-semibold uppercase tracking-wide text-brand">
+                              USD
+                            </span>
+                          )}
                           <span className="text-xs font-semibold uppercase tracking-wide text-bone/50">
                             {pr.note}
                           </span>
@@ -569,20 +609,36 @@ function Planes() {
                     </ul>
                   </div>
 
-                  {/* CTA — al fondo, alineado en las tres tarjetas
-                      TODO: conectar al checkout/compra cuando esté listo */}
-                  <button
-                    type="button"
-                    className={`cta mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-center text-sm font-semibold uppercase tracking-wider transition-colors ${
-                      p.featured
-                        ? 'bg-ink text-bone hover:bg-ink/85'
-                        : 'bg-brand text-ink hover:bg-brand-bright'
-                    }`}
-                  >
-                    {p.cta}
-                  </button>
+                  {/* CTA — al fondo, alineado en las tres tarjetas.
+                      Con `url` → abre el checkout; sin `url` → botón inerte. */}
+                  {ctaUrl ? (
+                    <a
+                      href={ctaUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`cta mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-center text-sm font-semibold uppercase tracking-wider transition-colors ${
+                        p.featured
+                          ? 'bg-ink text-bone hover:bg-ink/85'
+                          : 'bg-brand text-ink hover:bg-brand-bright'
+                      }`}
+                    >
+                      {p.cta}
+                    </a>
+                  ) : (
+                    <button
+                      type="button"
+                      className={`cta mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-center text-sm font-semibold uppercase tracking-wider transition-colors ${
+                        p.featured
+                          ? 'bg-ink text-bone hover:bg-ink/85'
+                          : 'bg-brand text-ink hover:bg-brand-bright'
+                      }`}
+                    >
+                      {p.cta}
+                    </button>
+                  )}
                 </article>
-              ))}
+                )
+              })}
             </div>
           </div>
         </section>
