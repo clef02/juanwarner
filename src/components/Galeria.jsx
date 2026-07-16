@@ -61,19 +61,19 @@ function Galeria() {
 
   useGSAP(
     () => {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+      const menosMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-      // El título entra desde abajo (normal, legible)
-      gsap.from('.gal-title', {
-        y: 30,
-        opacity: 0,
-        duration: 0.9,
-        ease: 'power3.out',
-        stagger: 0.1,
-        scrollTrigger: { trigger: root.current, start: 'top 78%' },
-      })
-
-      // El título se desvanece al pasar ~2 imágenes
+      // El título sticky se desvanece al pasar ~2 imágenes.
+      //
+      // Va FUERA del corte por "reducir movimiento" a propósito, y es
+      // importante: el título vive detrás de las fotos (z-0 contra z-10), así
+      // que si no se desvanece se queda pegado para siempre asomando entre las
+      // dos columnas, como texto suelto. Antes estaba dentro del corte y a esos
+      // usuarios se les veía roto.
+      //
+      // Y no contradice la preferencia: un cambio de opacidad no es
+      // movimiento. Esa opción existe para evitar desplazamientos y parpadeos
+      // que marean, no fundidos.
       gsap.to('.gal-titlebox', {
         opacity: 0,
         ease: 'none',
@@ -83,6 +83,20 @@ function Galeria() {
           end: '+=120%',
           scrub: true,
         },
+      })
+
+      // A partir de aquí, todo es movimiento de verdad: se salta si el usuario
+      // pidió reducirlo.
+      if (menosMovimiento) return
+
+      // El título entra desde abajo (normal, legible)
+      gsap.from('.gal-title', {
+        y: 30,
+        opacity: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        stagger: 0.1,
+        scrollTrigger: { trigger: root.current, start: 'top 78%' },
       })
 
       // Entrada: cada imagen aparece subiendo al entrar en viewport
