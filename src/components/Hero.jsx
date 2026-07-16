@@ -7,23 +7,30 @@ import { useContact } from './ContactModal'
 import gymBg from '../assets/gipnacio.jpg'
 import juanImg from '../assets/juan1.webp'
 import creadorImg from '../assets/creador.webp'
-import coachImg from '../assets/coach.webp'
+import actorImg from '../assets/juan2.png'
 
-// Accesos a facetas de la marca (el hub completo vive en la sección "Facetas")
+// Accesos a facetas de la marca (el hub completo vive en la sección "Facetas").
+//
+// Coach NO está aquí a propósito: el primer pantallazo no debe empujar a comprar
+// planes. A Planes se llega por el menú y por la sección "Facetas", más abajo.
+//
+// ⚠️ La foto de Actor es provisional: no hay ninguna imagen de cine o actuación
+// entre los assets, así que se usa un retrato con el mismo tratamiento
+// "Próximamente" (apagado y en gris) que ya lleva esta faceta en "Facetas".
 const CARDS = [
-  {
-    img: coachImg,
-    title: 'Coach',
-    action: 'Ver planes',
-    href: '/planes',
-    pos: 'object-[center_30%]',
-  },
   {
     img: creadorImg,
     title: 'Creador',
     action: 'Ver contenido',
     href: '/quien-soy',
     pos: 'object-[center_38%]',
+  },
+  {
+    img: actorImg,
+    title: 'Actor',
+    action: 'Próximamente',
+    comingSoon: true,
+    pos: 'object-top',
   },
 ]
 
@@ -77,17 +84,24 @@ function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/45 to-transparent sm:hidden" />
       </div>
 
-      {/* ---- Juan (recorte con fondo transparente, centrado) ---- */}
+      {/* ---- Juan (recorte con fondo transparente, centrado) ----
+           En móvil bajo NO se mide en svh, sino como "lo que sobra": está
+           anclado abajo, así que con `100svh - 200px` su cabeza queda siempre a
+           200px del borde superior — justo debajo del bloque de texto, que mide
+           unos 180px fijos. El truco es que el texto va en píxeles y no en svh:
+           por eso fijar la cabeza en píxeles cuadra a cualquier altura, mientras
+           que un porcentaje solo acierta en una. Y de paso Juan sale lo más
+           grande que quepa. Ver `movil-bajo` en index.css. */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] flex translate-x-0 translate-y-0 justify-center sm:translate-x-[9%] sm:translate-y-[9svh] lg:translate-y-[14svh]">
         <img
           src={juanImg}
-          alt="Juan Wagner, coach y creador de contenido"
-          className="hero-juan h-[70svh] w-auto max-w-none drop-shadow-2xl sm:h-[86svh] lg:h-[104svh]"
+          alt="Juan Wagner, creador de contenido y entrenador en línea"
+          className="hero-juan h-[70svh] w-auto max-w-none drop-shadow-2xl movil-bajo:h-[calc(100svh-200px)] sm:h-[86svh] lg:h-[104svh]"
         />
       </div>
 
       {/* ---- Contenedor ---- */}
-      <div className="relative z-10 flex h-full w-full flex-col items-center justify-between px-6 pb-10 pt-24 text-center sm:items-start sm:justify-center sm:px-10 sm:pb-0 sm:pt-0 sm:text-left lg:px-14 xl:px-20">
+      <div className="relative z-10 flex h-full w-full flex-col items-center justify-between px-6 pb-10 pt-24 text-center movil-bajo:pt-16 sm:items-start sm:justify-center sm:px-10 sm:pb-0 sm:pt-0 sm:text-left lg:px-14 xl:px-20">
         {/* Arriba: eyebrow + título + descripción */}
         <div className="w-full max-w-2xl sm:w-auto">
           {/* Eyebrow */}
@@ -111,8 +125,8 @@ function Hero() {
           </h1>
 
           {/* Subtítulo */}
-          <p className="anim-sub mx-auto mt-5 max-w-md text-sm font-medium uppercase leading-relaxed tracking-wide text-muted sm:mx-0 sm:mt-6 sm:text-base">
-            Entrenador, creador de contenido y embajador de marca ·{' '}
+          <p className="anim-sub mx-auto mt-5 max-w-md text-sm font-medium uppercase leading-relaxed tracking-wide text-muted movil-bajo:mt-3 movil-bajo:text-xs movil-bajo:leading-snug sm:mx-0 sm:mt-6 sm:text-base">
+            Creador de contenido, entrenador en línea y actor ·{' '}
             <span className="font-semibold text-brand">
               Todo lo que soy, en un solo lugar
             </span>
@@ -172,36 +186,54 @@ function Hero() {
         {/* Tarjetas flotantes abajo a la derecha (accesos a facetas) — ocultas en móvil */}
         <div className="absolute bottom-6 right-6 z-20 hidden sm:block sm:right-10 lg:right-14 xl:right-20">
           <div className="flex items-end gap-4">
-            {CARDS.map(({ img, title, action, href, pos }, i) => (
-              <a
-                key={title}
-                href={href}
-                className={`anim-card group relative block overflow-hidden rounded-lg border border-brand/30 bg-ink shadow-lg shadow-black/30 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-brand/60 hover:shadow-2xl hover:shadow-brand/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink ${
-                  i === 0
-                    ? 'h-32 w-40 sm:h-52 sm:w-64'
-                    : 'h-28 w-36 sm:h-48 sm:w-56'
-                }`}
-              >
-                <img
-                  src={img}
-                  alt=""
-                  aria-hidden="true"
-                  className={`absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 ${pos}`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent" />
-                {/* Brillo que barre la card al hacer hover */}
-                <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
-                <div className="absolute inset-x-0 bottom-0 p-3.5 text-left">
-                  <p className="font-display text-base font-bold uppercase tracking-tight sm:text-lg">
-                    {title}
-                  </p>
-                  <p className="mt-1 flex items-center gap-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-muted transition-colors group-hover:text-brand">
-                    {action}
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
-                  </p>
-                </div>
-              </a>
-            ))}
+            {CARDS.map(({ img, title, action, href, pos, comingSoon }, i) => {
+              // Actor todavía no tiene página. Se renderiza como <div> en vez de
+              // <a> para no dejar un enlace que no lleva a ningún sitio (mismo
+              // criterio que la sección "Facetas").
+              const Tarjeta = comingSoon ? 'div' : 'a'
+              return (
+                <Tarjeta
+                  key={title}
+                  {...(comingSoon ? {} : { href })}
+                  className={`anim-card group relative block overflow-hidden rounded-lg border border-brand/30 bg-ink shadow-lg shadow-black/30 transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink ${
+                    comingSoon
+                      ? ''
+                      : 'hover:-translate-y-1.5 hover:border-brand/60 hover:shadow-2xl hover:shadow-brand/30'
+                  } ${i === 0 ? 'h-32 w-40 sm:h-52 sm:w-64' : 'h-28 w-36 sm:h-48 sm:w-56'}`}
+                >
+                  <img
+                    src={img}
+                    alt=""
+                    aria-hidden="true"
+                    className={`absolute inset-0 h-full w-full object-cover transition-transform duration-500 ${pos} ${
+                      comingSoon ? 'opacity-50 grayscale' : 'group-hover:scale-110'
+                    }`}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent" />
+                  {/* Brillo que barre la card al hacer hover (solo si es un enlace) */}
+                  {!comingSoon && (
+                    <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
+                  )}
+                  <div className="absolute inset-x-0 bottom-0 p-3.5 text-left">
+                    <p className="font-display text-base font-bold uppercase tracking-tight sm:text-lg">
+                      {title}
+                    </p>
+                    <p
+                      className={`mt-1 flex items-center gap-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] ${
+                        comingSoon
+                          ? 'text-muted/70'
+                          : 'text-muted transition-colors group-hover:text-brand'
+                      }`}
+                    >
+                      {action}
+                      {!comingSoon && (
+                        <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+                      )}
+                    </p>
+                  </div>
+                </Tarjeta>
+              )
+            })}
           </div>
         </div>
       </div>

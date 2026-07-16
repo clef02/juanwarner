@@ -4,17 +4,26 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Juan Wagner — entrenador personal y nutricionista. Método personalizado para construir el mejor físico de tu vida."
-    />
+    <meta name="theme-color" content="#0e0e10" />
+
+    <!--
+      El SEO de cada página (título, descripción, canonical, Open Graph y JSON-LD)
+      NO se escribe aquí: sale de src/seo/meta.js. Al compilar, scripts/prerender.js
+      genera un HTML por ruta con sus propias etiquetas, y en las navegaciones
+      dentro de la SPA las actualiza src/seo/Seo.jsx.
+
+      Por eso este <head> solo lleva lo que es igual en todo el sitio. Si añades
+      aquí una descripción o un og:*, saldría duplicada en todas las páginas.
+      Para cambiar textos o el dominio, ve a src/seo/meta.js.
+    -->
+    <title>Juan Wagner · Creador de contenido y entrenador en línea</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <title>Juan Wagner · Entrenador y Nutricionista</title>
   </head>
   <body>
     <div id="root"></div>

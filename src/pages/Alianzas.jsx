@@ -165,7 +165,7 @@ function Alianza() {
             <div className="al-reveal relative aspect-square overflow-hidden rounded-3xl border border-ink/5 bg-ink/[0.03] shadow-2xl shadow-black/30">
               <img
                 src={sponsor.introImg}
-                alt={sponsor.name}
+                alt={sponsor.introAlt}
                 className={`h-full w-full ${sponsor.introFit || 'object-cover'} ${
                   sponsor.introPos || 'object-top'
                 }`}
@@ -194,7 +194,8 @@ function Alianza() {
                 <div className="relative min-h-[360px] overflow-hidden rounded-2xl border border-ink/5 shadow-xl shadow-black/20 lg:min-h-[600px]">
                   <img
                     src={sponsor.supplements.imgMain}
-                    alt={sponsor.name}
+                    alt={sponsor.supplements.imgMainAlt}
+                    loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover object-center"
                   />
                 </div>
@@ -229,7 +230,8 @@ function Alianza() {
                   <div className="relative min-h-[320px] flex-1 overflow-hidden rounded-2xl border border-ink/5 shadow-xl shadow-black/20 lg:min-h-[420px]">
                     <img
                       src={sponsor.supplements.imgSide}
-                      alt={sponsor.name}
+                      alt={sponsor.supplements.imgSideAlt}
+                      loading="lazy"
                       className="absolute inset-0 h-full w-full object-cover object-center"
                     />
                   </div>
@@ -309,19 +311,27 @@ function Alianza() {
               <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-bone to-transparent sm:w-28" />
 
               <div className="flex shrink-0 group-hover:[animation-play-state:paused] motion-safe:animate-[marquee_40s_linear_infinite]">
-                {galleryTrack.map((img, i) => (
-                  <div
-                    key={i}
-                    className="relative mr-4 h-72 w-56 shrink-0 overflow-hidden rounded-2xl border border-ink/5 shadow-xl shadow-black/20 sm:h-96 sm:w-72"
-                  >
-                    <img
-                      src={img}
-                      alt=""
-                      aria-hidden="true"
-                      className="absolute inset-0 h-full w-full object-cover object-center"
-                    />
-                  </div>
-                ))}
+                {galleryTrack.map((img, i) => {
+                  // La pista repite las mismas fotos para que el bucle no tenga
+                  // costuras. Solo la primera vuelta lleva alt: las copias son
+                  // adorno, y describirlas otra vez sería texto repetido para
+                  // Google y ruido para un lector de pantalla.
+                  const esOriginal = i < gallery.length
+                  return (
+                    <div
+                      key={i}
+                      className="relative mr-4 h-72 w-56 shrink-0 overflow-hidden rounded-2xl border border-ink/5 shadow-xl shadow-black/20 sm:h-96 sm:w-72"
+                    >
+                      <img
+                        src={img}
+                        alt={esOriginal ? `Juan Wagner en acción con ${sponsor.name}` : ''}
+                        aria-hidden={esOriginal ? undefined : 'true'}
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover object-center"
+                      />
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </section>

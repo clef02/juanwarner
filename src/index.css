@@ -14,6 +14,16 @@
   --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
 }
 
+/* ---- Variante: móvil con poca altura ----
+   El hero mide en `svh` (la cabeza de Juan está a 30svh del borde superior),
+   pero el bloque de texto mide en píxeles fijos (~250px). En cuanto la pantalla
+   baja de ~700px —un Android con la barra del navegador, o un móvil pequeño—
+   el texto alcanza la cara de Juan y deja de leerse.
+
+   Se limita también por ancho (<640px) a propósito: así nunca se cuela en un
+   portátil de pantalla baja, donde el hero usa otra composición (`sm:`). */
+@custom-variant movil-bajo (@media (max-width: 639px) and (max-height: 720px));
+
 /* ---- Base ---- */
 html {
   scroll-behavior: smooth;

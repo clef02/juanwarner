@@ -10,20 +10,23 @@ import gipnacio from '../assets/gipnacio.jpg'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
+// El orden es el mismo que el de los textos de la marca: Creador de contenido →
+// Entrenador en línea → Actor. El creador va primero porque es el foco; los
+// planes no deben ser lo primero que se ofrece.
 const FACETAS = [
-  {
-    title: 'Coach',
-    desc: 'Planes de entrenamiento y nutrición hechos a tu medida',
-    img: coachImg,
-    pos: 'object-[center_28%]',
-    href: '/planes',
-  },
   {
     title: 'Creador',
     desc: 'Contenido y una comunidad que crece cada día',
     img: info1,
     pos: 'object-center',
     social: true,
+  },
+  {
+    title: 'Coach',
+    desc: 'Planes de entrenamiento y nutrición hechos a tu medida',
+    img: coachImg,
+    pos: 'object-[center_28%]',
+    href: '/planes',
   },
   {
     title: 'Actor',
@@ -70,12 +73,19 @@ function Facetas() {
           scrollTrigger: { trigger: facet, start: 'top 78%' },
         })
 
-        // Parallax: el nombre de fondo "flota" mientras haces scroll (profundidad)
+        // Parallax: el nombre de fondo "flota" mientras haces scroll (profundidad).
+        //
+        // El recorrido va de +DERIVA a -DERIVA, así que el título queda EXACTAMENTE
+        // centrado detrás de la foto cuando la faceta está en mitad de la pantalla,
+        // que es cuando la estás mirando. Antes la deriva era 30 y, como la fuente
+        // llega a 23vw, eso lo movía ~150px: se veía descentrado casi siempre.
+        // Súbelo si quieres más movimiento; bájalo si vuelve a irse del centro.
+        const DERIVA = 12
         gsap.fromTo(
           title,
-          { yPercent: 30 },
+          { yPercent: DERIVA },
           {
-            yPercent: -30,
+            yPercent: -DERIVA,
             ease: 'none',
             scrollTrigger: {
               trigger: facet,

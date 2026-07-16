@@ -1,0 +1,31 @@
+# Configuración de Netlify.
+#
+# ⚠️ Este archivo SOLO funciona en Netlify. Si el sitio se muda a otro hosting
+# (cPanel, Vercel, un VPS…), estas reglas dejan de aplicarse SIN dar ningún
+# error: el sitio sigue viéndose bien, pero el SEO se rompe por dentro.
+# Antes de mudarlo, lee HOSTING.md — están las 4 reglas que el servidor nuevo
+# tiene que cumplir, ya traducidas a Apache, y cómo comprobarlas.
+#
+# OJO: aquí NO hay un "catch-all" hacia /index.html, y es a propósito.
+# El build genera un HTML por ruta (dist/planes/index.html, etc.), así que
+# Netlify los sirve directamente. Si alguien añade una regla del tipo
+# `from = "/*" to = "/index.html" status = 200`, se cargaría el prerender:
+# todas las URLs devolverían el HTML del inicio, con su título y su
+# descripción, y Google indexaría seis páginas idénticas.
+#
+# Como no hay catch-all, una URL inexistente devuelve un 404 de verdad
+# (no un "soft 404"), y Netlify usa el dist/404.html que genera el prerender.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# /alianzas no es una página: es el atajo al primer patrocinio.
+# Tiene que ser un 301 del servidor y no una redirección de React, porque al
+# servirse HTML estático no hay nada que ejecute el JavaScript en esa URL.
+# `force = true` porque no existe dist/alianzas/index.html que pudiera ganarle.
+[[redirects]]
+  from = "/alianzas"
+  to = "/alianzas/youngla"
+  status = 301
+  force = true

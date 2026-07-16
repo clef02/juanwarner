@@ -28,6 +28,7 @@ export const SPONSORS = [
     heroImg: younglaGale2,
     heroPos: 'object-[center_30%]',
     introImg: younglaGale,
+    introAlt: 'Juan Wagner vistiendo ropa de YoungLA',
     introPos: 'object-center',
     introHeading: 'La marca número uno en fitness y lifestyle',
     introParagraphs: [
@@ -52,6 +53,7 @@ export const SPONSORS = [
     heroImg: galeriDra4,
     heroPos: 'object-[center_35%]',
     introImg: dragonImg,
+    introAlt: 'Juan Wagner con productos de Dragon Pharma',
     introPos: 'object-center',
     introHeading: 'Mi primer gran patrocinio',
     introParagraphs: [
@@ -61,7 +63,9 @@ export const SPONSORS = [
     supplements: {
       heading: 'Así me suplemento yo',
       imgMain: dragonmed,
+      imgMainAlt: 'Juan Wagner tomando su suplementación de Dragon Pharma',
       imgSide: dragonfarma,
+      imgSideAlt: 'Línea de suplementos de Dragon Pharma que utiliza Juan Wagner',
       items: [
         {
           name: 'Creatina',

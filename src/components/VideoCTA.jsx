@@ -3,8 +3,7 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight } from 'lucide-react'
-import posterImg from '../assets/gipnacio.jpg'
-import ctaVideo from '../assets/cta-video2.mp4'
+import fondoImg from '../assets/juanfooter.webp'
 import { useContact } from './ContactModal'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
@@ -35,17 +34,24 @@ function VideoCTA() {
       id="empezar"
       className="relative flex h-svh min-h-[600px] w-full overflow-hidden bg-ink text-bone"
     >
-      {/* Video de fondo */}
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster={posterImg}
-      >
-        <source src={ctaVideo} type="video/mp4" />
-      </video>
+      {/* Fondo.
+          Antes había un vídeo de stock (cta-video2.mp4) en el que salía un
+          hombre que no era Juan: se eliminó, porque en la web solo va material
+          propio, nunca personas de banco de imágenes.
+
+          La foto es vertical y aquí se ve a pantalla completa, así que
+          `object-cover` recorta bastante: el 45% encuadra a Juan de cara y torso
+          y deja el bajo para el titular y el botón. Si lo subes, se va hacia el
+          techo vacío; si lo bajas, le come la cara.
+
+          Si algún día llega un vídeo de Juan APAISADO, vuelve a poner aquí un
+          <video autoPlay muted loop playsInline> con estas mismas clases y deja
+          esta foto como `poster`. */}
+      <img
+        src={fondoImg}
+        alt="Juan Wagner en el gimnasio con su bolsa de deporte y un shaker"
+        className="absolute inset-0 h-full w-full object-cover object-[center_45%]"
+      />
 
       {/* Overlays de legibilidad (más oscuro abajo para el texto) */}
       <div className="absolute inset-0 bg-ink/30" />

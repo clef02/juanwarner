@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { BadgeCheck, Download } from 'lucide-react'
+import { ArrowRight, BadgeCheck, Download, Mail } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { SPONSORS } from '../data/sponsors'
@@ -16,11 +16,24 @@ import openEnglishLogo from '../assets/openenglish.png'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
+// Correo de contrataciones. Las marcas escriben aquí para pedir cotización.
+const MANAGER_EMAIL = 'manager@juanwagner.com'
+
+// Qué incluye el media kit.
+// Solo "Formatos y tarifas" lleva enlace (abre el correo ya con el asunto
+// puesto). Los otros tres son informativos: no llevan a ningún sitio, así que
+// tampoco llevan hover ni deben parecer clicables.
 const KIT_INCLUYE = [
-  'Mi historia y línea editorial',
-  'Datos de audiencia y alcance',
-  'Casos de éxito con marcas',
-  'Formatos y tarifas de colaboración',
+  { label: 'Mi historia' },
+  { label: 'Datos de audiencia y alcance' },
+  { label: 'Casos de éxito con marcas' },
+  {
+    label: 'Formatos y tarifas de colaboración',
+    href: `mailto:${MANAGER_EMAIL}?subject=${encodeURIComponent(
+      'Cotización de colaboración — juanwagner.com',
+    )}`,
+    cta: 'Escríbenos para cotizar',
+  },
 ]
 
 // Muro de logos — marcas aliadas (YoungLA y Dragon toman su logo de SPONSORS)
@@ -60,7 +73,7 @@ function Sponsors() {
         <section className="relative flex h-svh w-full flex-col justify-end overflow-hidden bg-ink pb-16 pt-40 text-bone lg:pb-20">
           <img
             src={heroImg}
-            alt="Juan Wagner"
+            alt="Juan Wagner grabando contenido con el móvil en el gimnasio"
             className="absolute inset-0 h-full w-full object-cover object-[center_45%]"
           />
           <div className="absolute inset-0 bg-ink/55" />
@@ -129,7 +142,7 @@ function Sponsors() {
             <div className="sp-reveal relative aspect-square overflow-hidden rounded-3xl border border-ink/5 shadow-2xl shadow-black/30">
               <img
                 src={introImg}
-                alt="Juan Wagner con su comunidad"
+                alt="Juan Wagner rodeado de seguidores en un evento"
                 className="h-full w-full object-cover object-center"
               />
             </div>
@@ -204,7 +217,7 @@ function Sponsors() {
                     Juan Wagner
                   </p>
                   <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
-                    Coach · Creador · Embajador
+                    Creador · Embajador · Coach
                   </p>
                 </div>
               </div>
@@ -213,17 +226,34 @@ function Sponsors() {
               <div className="order-2 flex flex-col gap-4 lg:col-span-2">
                 {/* Qué incluye — 4 tarjetas con icono */}
                 <div className="grid gap-4 sm:grid-cols-2">
-                  {KIT_INCLUYE.map((item) => (
-                    <div
-                      key={item}
-                      className="flex items-start gap-3 rounded-[1.75rem] border border-ink/10 bg-white/50 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/40 hover:shadow-xl hover:shadow-black/5"
-                    >
-                      <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
-                      <span className="text-sm font-medium leading-snug text-ink">
-                        {item}
-                      </span>
-                    </div>
-                  ))}
+                  {KIT_INCLUYE.map(({ label, href, cta }) => {
+                    // Sin enlace → <div> quieto, sin hover: si no lleva a ningún
+                    // sitio, no debe invitar a hacer clic.
+                    const Tarjeta = href ? 'a' : 'div'
+                    return (
+                      <Tarjeta
+                        key={label}
+                        {...(href ? { href } : {})}
+                        className={`flex items-start gap-3 rounded-[1.75rem] border p-6 ${
+                          href
+                            ? 'group border-brand/30 bg-white/70 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/60 hover:shadow-xl hover:shadow-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand'
+                            : 'border-ink/10 bg-white/50'
+                        }`}
+                      >
+                        <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
+                        <span className="text-sm font-medium leading-snug text-ink">
+                          {label}
+                          {cta && (
+                            <span className="mt-2 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-brand">
+                              <Mail className="h-3.5 w-3.5" />
+                              {cta}
+                              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+                            </span>
+                          )}
+                        </span>
+                      </Tarjeta>
+                    )
+                  })}
                 </div>
 
                 {/* Descarga — tile oscuro premium con glow dorado */}

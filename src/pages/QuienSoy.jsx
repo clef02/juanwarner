@@ -40,7 +40,7 @@ function QuienSoy() {
         <section className="relative flex h-svh w-full flex-col justify-end overflow-hidden bg-ink pb-16 pt-40 text-bone lg:pb-20">
           <img
             src={juan2}
-            alt="Juan Wagner"
+            alt="Juan Wagner con camiseta de compresión en el gimnasio"
             className="absolute inset-0 h-full w-full object-cover object-[center_20%]"
           />
           <div className="absolute inset-0 bg-ink/40" />

@@ -1,10 +1,17 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { X, Send, Check } from 'lucide-react'
 
-// ⚠️ PEGA AQUÍ TU ACCESS KEY DE WEB3FORMS
-// Gratis en https://web3forms.com → pon tu correo → te dan una "Access Key".
-// Los mensajes del formulario te llegarán a ese correo.
-const WEB3FORMS_ACCESS_KEY = 'TU_ACCESS_KEY_DE_WEB3FORMS'
+// Access Key de Web3Forms (el servicio que reenvía el formulario por correo).
+//
+// NO es un secreto: viaja en el JavaScript de la página, así que cualquiera
+// puede verla. El propio Web3Forms lo documenta así. Lo que sí queda oculto es
+// el correo de destino, que se configura en su panel y no aparece aquí.
+//
+// El destinatario se cambia desde web3forms.com (formulario "Contacto
+// juanwagner.com"), no tocando este archivo. Si algún día dejan de llegar los
+// mensajes, mira primero ahí: el plan gratuito corta a los 250 al mes y el
+// contador es de la cuenta entera, no de este formulario.
+const WEB3FORMS_ACCESS_KEY = 'e71d96c7-9eff-4f7c-9326-752b7bcf6508'
 
 // Asuntos según el botón que abre el modal
 const TOPICS = {
@@ -66,8 +73,18 @@ function ContactModal({ open, topic, onClose }) {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
-          subject: `Nuevo contacto (${data.asunto}) — juanwagner.com`,
-          from_name: 'Web · Juan Wagner',
+
+          // El asunto empieza por el tema y el nombre para poder ordenar la
+          // bandeja de un vistazo. Antes todos los avisos se llamaban igual.
+          subject: `${data.asunto} — ${data.nombre} · juanwagner.com`,
+          from_name: 'Web · juanwagner.com',
+
+          // Imprescindible: Web3Forms solo entiende el correo del visitante si
+          // llega en `email` o en `replyto`, y este formulario lo manda en
+          // `correo`. Sin esta línea, darle a Responder no le llega a nadie y
+          // habría que copiar la dirección a mano en cada mensaje.
+          replyto: data.correo,
+
           ...data,
         }),
       })

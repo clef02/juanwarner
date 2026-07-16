@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router'
 import SmoothScroll from './components/SmoothScroll'
+import Seo from './seo/Seo'
 import { ContactProvider } from './components/ContactModal'
 import Home from './pages/Home'
 import QuienSoy from './pages/QuienSoy'
@@ -12,6 +13,7 @@ function App() {
   return (
     <SmoothScroll>
       <ContactProvider>
+        <Seo />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/quien-soy" element={<QuienSoy />} />

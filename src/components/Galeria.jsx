@@ -18,19 +18,42 @@ import galeri7 from '../assets/galeri7.webp'
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 // Galería — cuadrícula de 2 columnas (todas en pares). `video:` = clip.
+// `alt` describe lo que se ve en cada foto (no quién es Juan): son imágenes con
+// contenido, no adorno, así que cada una necesita su texto para Google y los
+// lectores de pantalla. Si cambias una imagen, cambia también su `alt`.
 const IMAGES = [
-  { img: info2, pos: 'object-top' },
+  { img: info2, pos: 'object-top', alt: 'Juan Wagner entrenando en el gimnasio' },
   { video: galeri1, pos: 'object-center' },
-  { img: juan2, pos: 'object-top' },
-  { img: galeri4, pos: 'object-center' },
-  { img: galeri5, pos: 'object-center' },
-  { img: galeria, pos: 'object-center' },
-  { img: info1, pos: 'object-center' },
-  { img: creadorImg, pos: 'object-center' },
-  { img: galeri6, pos: 'object-center' },
-  { img: galeri7, pos: 'object-center' },
-  { img: galeri3, pos: 'object-center' },
-  { img: quiensoy, pos: 'object-center' },
+  { img: juan2, pos: 'object-top', alt: 'Juan Wagner con camiseta de compresión en el gimnasio' },
+  {
+    img: galeri4,
+    pos: 'object-center',
+    alt: 'Juan Wagner posando frente al espejo durante una sesión de fotos',
+  },
+  {
+    img: galeri5,
+    pos: 'object-center',
+    alt: 'Juan Wagner entrenando al aire libre con una mancuerna de madera',
+  },
+  { img: galeria, pos: 'object-center', alt: 'Juan Wagner posando con un seguidor en un evento' },
+  { img: info1, pos: 'object-center', alt: 'Juan Wagner rodeado de seguidores en un evento' },
+  {
+    img: creadorImg,
+    pos: 'object-center',
+    alt: 'Juan Wagner grabando contenido con el móvil en el gimnasio',
+  },
+  {
+    img: galeri6,
+    pos: 'object-center',
+    alt: 'Juan Wagner sosteniendo un disco de peso en el gimnasio',
+  },
+  {
+    img: galeri7,
+    pos: 'object-center',
+    alt: 'Juan Wagner volteando un neumático gigante al aire libre',
+  },
+  { img: galeri3, pos: 'object-center', alt: 'Juan Wagner posando sin camiseta en el gimnasio' },
+  { img: quiensoy, pos: 'object-center', alt: 'Juan Wagner marcando bíceps en el gimnasio' },
 ]
 
 function Galeria() {
@@ -114,8 +137,8 @@ function Galeria() {
                   ) : (
                     <img
                       src={g.img}
-                      alt=""
-                      aria-hidden="true"
+                      alt={g.alt}
+                      loading="lazy"
                       className={`h-full w-full object-cover ${g.pos}`}
                     />
                   )}
