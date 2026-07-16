@@ -7,10 +7,13 @@ import { X, Send, Check } from 'lucide-react'
 // puede verla. El propio Web3Forms lo documenta así. Lo que sí queda oculto es
 // el correo de destino, que se configura en su panel y no aparece aquí.
 //
-// El destinatario se cambia desde web3forms.com (formulario "Contacto
-// juanwagner.com"), no tocando este archivo. Si algún día dejan de llegar los
-// mensajes, mira primero ahí: el plan gratuito corta a los 250 al mes y el
-// contador es de la cuenta entera, no de este formulario.
+// Los mensajes llegan a manager@juanwagner.com. Ese destino NO está aquí: se
+// configura en web3forms.com → el formulario → Settings → Recipient Emails, y
+// se cambia ahí, nunca tocando este archivo.
+//
+// Si algún día dejan de llegar mensajes, mira el panel antes que el código: el
+// plan gratuito corta a los 250 al mes y ese contador es de la cuenta entera,
+// no solo de este formulario.
 const WEB3FORMS_ACCESS_KEY = 'e71d96c7-9eff-4f7c-9326-752b7bcf6508'
 
 // Asuntos según el botón que abre el modal
