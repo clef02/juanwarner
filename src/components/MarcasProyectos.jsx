@@ -5,8 +5,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight } from 'lucide-react'
 import youngLaImg from '../assets/youngla1.1.webp'
 import dragonImg from '../assets/dragonfarma.webp'
-import youngLaLogo from '../assets/youngla.png'
-import dragonLogo from '../assets/dragon.png'
+import youngLaLogo from '../assets/youngla-logo.webp'
+import dragonLogo from '../assets/dragon-logo.webp'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -88,6 +88,7 @@ function MarcasProyectos() {
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={p.img}
+                  loading="lazy"
                   alt={`Juan Wagner — ${p.name}`}
                   className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${p.pos}`}
                 />
@@ -95,6 +96,7 @@ function MarcasProyectos() {
               <div className="flex flex-1 flex-col p-8">
                 <img
                   src={p.logo}
+                  loading="lazy"
                   alt={p.name}
                   className="h-8 w-auto max-w-[60%] object-contain object-left sm:h-10"
                 />

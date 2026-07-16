@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Timeline from '../components/Timeline'
 import Filosofia from '../components/Filosofia'
-import juan2 from '../assets/juan2.png'
+import juan2 from '../assets/juan2.webp'
 import quiensoy from '../assets/quiensoy.webp'
 import creadorImg from '../assets/creador.webp'
 
@@ -130,6 +130,7 @@ function QuienSoy() {
           <div className="qs-reveal aspect-square overflow-hidden">
             <img
               src={quiensoy}
+              loading="lazy"
               alt="Juan Wagner, atleta"
               className="h-full w-full object-cover object-center"
             />
@@ -137,6 +138,7 @@ function QuienSoy() {
           <div className="qs-reveal aspect-square overflow-hidden">
             <img
               src={creadorImg}
+              loading="lazy"
               alt="Juan Wagner creando contenido"
               className="h-full w-full object-cover object-center"
             />

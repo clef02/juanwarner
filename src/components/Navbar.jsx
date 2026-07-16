@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Menu, X, ChevronDown } from 'lucide-react'
-import logoLight from '../assets/jw-logo.png'
-import logoDark from '../assets/jw-logo-dark.png'
+import logoLight from '../assets/jw-logo.webp'
+import logoDark from '../assets/jw-logo-dark.webp'
 import { SOCIAL } from './SocialIcons'
 
 // Mapa del sitio

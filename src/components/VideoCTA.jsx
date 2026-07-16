@@ -49,6 +49,7 @@ function VideoCTA() {
           esta foto como `poster`. */}
       <img
         src={fondoImg}
+        loading="lazy"
         alt="Juan Wagner en el gimnasio con su bolsa de deporte y un shaker"
         className="absolute inset-0 h-full w-full object-cover object-[center_45%]"
       />

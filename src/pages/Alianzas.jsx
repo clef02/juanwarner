@@ -165,6 +165,7 @@ function Alianza() {
             <div className="al-reveal relative aspect-square overflow-hidden rounded-3xl border border-ink/5 bg-ink/[0.03] shadow-2xl shadow-black/30">
               <img
                 src={sponsor.introImg}
+                loading="lazy"
                 alt={sponsor.introAlt}
                 className={`h-full w-full ${sponsor.introFit || 'object-cover'} ${
                   sponsor.introPos || 'object-top'

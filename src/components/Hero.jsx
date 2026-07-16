@@ -4,10 +4,10 @@ import { useGSAP } from '@gsap/react'
 import { ArrowRight } from 'lucide-react'
 import { SOCIAL } from './SocialIcons'
 import { useContact } from './ContactModal'
-import gymBg from '../assets/gipnacio.jpg'
+import gymBg from '../assets/gipnacio.webp'
 import juanImg from '../assets/juan1.webp'
 import creadorImg from '../assets/creador.webp'
-import actorImg from '../assets/juan2.png'
+import actorImg from '../assets/juan2.webp'
 
 // Accesos a facetas de la marca (el hub completo vive en la sección "Facetas").
 //

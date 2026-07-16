@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react'
 import { SOCIAL } from './SocialIcons'
 import info1 from '../assets/info1.webp'
 import coachImg from '../assets/coach.webp'
-import gipnacio from '../assets/gipnacio.jpg'
+import gipnacio from '../assets/gipnacio.webp'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -147,6 +147,7 @@ function Facetas() {
                   >
                     <img
                       src={img}
+                      loading="lazy"
                       alt={`Juan Wagner — ${title}`}
                       className={`facet-photo h-full w-full object-cover ${pos} ${
                         comingSoon ? 'opacity-50 grayscale' : ''

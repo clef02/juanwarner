@@ -19,11 +19,11 @@ import VideoCTA from '../components/VideoCTA'
 import { useContact } from '../components/ContactModal'
 import { FAQ } from '../data/faq'
 import heroImg from '../assets/info2.webp'
-import encasaImg from '../assets/encasa.jpg'
+import encasaImg from '../assets/encasa.webp'
 import entrenaImg from '../assets/entrena.webp'
 import controlImg from '../assets/control.webp'
-import comerImg from '../assets/comer.jpg'
-import listaImg from '../assets/listamercado.jpg'
+import comerImg from '../assets/comer.webp'
+import listaImg from '../assets/listamercado.webp'
 import necesidadesImg from '../assets/ajuste.webp'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
@@ -258,6 +258,7 @@ function EditorialShowcase({ data, dark = false, reverse = false }) {
                 >
                   <img
                     src={it.img}
+                    loading="lazy"
                     alt={it.title}
                     className={`h-full w-full object-cover ${
                       it.pos || 'object-center'
@@ -274,6 +275,7 @@ function EditorialShowcase({ data, dark = false, reverse = false }) {
               <img
                 key={item.img}
                 src={item.img}
+                loading="lazy"
                 alt={item.title}
                 className={`h-full w-full animate-[pl-fade_0.5s_ease] object-cover ${
                   item.pos || 'object-center'

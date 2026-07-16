@@ -8,11 +8,11 @@ import Footer from '../components/Footer'
 import { SPONSORS } from '../data/sponsors'
 import heroImg from '../assets/creador.webp'
 import introImg from '../assets/info1.webp'
-import kitImg from '../assets/juan2.png'
+import kitImg from '../assets/juan2.webp'
 import mediaKitPdf from '../assets/JuanWagner MediaKit 2026.pdf'
-import yesoulLogo from '../assets/YESOUL FITNESS.png'
-import temuLogo from '../assets/temu.png'
-import openEnglishLogo from '../assets/openenglish.png'
+import yesoulLogo from '../assets/yesoul.webp'
+import temuLogo from '../assets/temu.webp'
+import openEnglishLogo from '../assets/openenglish.webp'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -142,6 +142,7 @@ function Sponsors() {
             <div className="sp-reveal relative aspect-square overflow-hidden rounded-3xl border border-ink/5 shadow-2xl shadow-black/30">
               <img
                 src={introImg}
+                loading="lazy"
                 alt="Juan Wagner rodeado de seguidores en un evento"
                 className="h-full w-full object-cover object-center"
               />
@@ -205,6 +206,7 @@ function Sponsors() {
               <div className="group relative order-1 min-h-[480px] overflow-hidden rounded-[2rem] shadow-2xl shadow-black/25 ring-1 ring-ink/10 lg:col-span-3 lg:min-h-[640px]">
                 <img
                   src={kitImg}
+                  loading="lazy"
                   alt="Media kit de Juan Wagner"
                   className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                 />

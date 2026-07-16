@@ -73,6 +73,7 @@ function About() {
               >
                 <img
                   src={img}
+                  loading="lazy"
                   alt={alt}
                   className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 ${pos}`}
                 />
@@ -87,6 +88,7 @@ function About() {
           <div className="about-img relative aspect-square overflow-hidden border-2 border-brand shadow-2xl shadow-black/50">
             <img
               src={aboutImg}
+              loading="lazy"
               alt="Juan Wagner entrenando en el gimnasio"
               className="h-full w-full object-cover object-[center_58%]"
             />

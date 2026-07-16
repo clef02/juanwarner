@@ -1,5 +1,5 @@
 import { ArrowRight, LogIn } from 'lucide-react'
-import logo from '../assets/jw-logo.png'
+import logo from '../assets/jw-logo.webp'
 import { SOCIAL } from './SocialIcons'
 
 const MENU_COL_1 = [
@@ -34,6 +34,7 @@ function Footer() {
         <a href="/" className="inline-block">
           <img
             src={logo}
+            loading="lazy"
             alt="Juan Wagner"
             className="h-12 w-auto sm:h-14"
           />
