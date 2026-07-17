@@ -112,5 +112,12 @@ el hosting está bien configurado.
   ahí salen las canónicas, el sitemap y las imágenes de redes.
 - **`SEO_NOINDEX=true`** es una variable de entorno del build. Va SOLO en el
   entorno de pruebas, para que no compita con el sitio real en Google.
+- **`VITE_GA_ID=G-XXXXXXXXXX`** enciende Google Analytics. Va SOLO en producción:
+  en pruebas mezclaría las dos webs en el mismo informe. Sin ella el sitio
+  funciona igual pero no mide nada, así que **si un día desaparecen las visitas,
+  mira esta variable antes que el código**. Ojo: las variables `VITE_*` se
+  incrustan al compilar, o sea que añadirla o cambiarla no hace efecto hasta el
+  siguiente despliegue. El manual completo está arriba del todo en
+  `src/analytics/ga.js`.
 - **El formulario de contacto** hoy usa Web3Forms (un servicio externo), así que
   no depende del hosting y se mudará sin tocar nada.

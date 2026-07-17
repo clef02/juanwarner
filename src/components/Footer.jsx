@@ -1,6 +1,7 @@
 import { ArrowRight, LogIn } from 'lucide-react'
 import logo from '../assets/jw-logo.webp'
 import { SOCIAL } from './SocialIcons'
+import { evento, EVENTOS } from '../analytics/ga'
 
 const MENU_COL_1 = [
   { label: 'Inicio', href: '/' },
@@ -97,10 +98,15 @@ function Footer() {
               © 2026 Juan Wagner. Todos los derechos reservados.
             </p>
             {/* Acceso discreto al área de miembros */}
+            {/* Lleva evento propio aunque GA4 ya cuente solo las salidas a otros
+                dominios: su evento automático se llama `click` y mete en el mismo
+                saco Instagram, YouTube y esto. Aquí entran los que YA pagan, que
+                no tienen nada que ver con el que se va a curiosear a una red. */}
             <a
               href="https://members.juanwagner.com/"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => evento(EVENTOS.SALIDA, { destino: 'area_miembros', zona: 'footer' })}
               className="group inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-muted transition-colors duration-200 hover:text-brand"
             >
               <LogIn className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />

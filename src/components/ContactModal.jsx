@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { X, Send, Check } from 'lucide-react'
+import { evento, EVENTOS } from '../analytics/ga'
 
 // Access Key de Web3Forms (el servicio que reenvía el formulario por correo).
 //
@@ -93,8 +94,26 @@ function ContactModal({ open, topic, onClose }) {
       })
       const json = await res.json()
       setStatus(json.success ? 'ok' : 'error')
+
+      // Se mide aquí, con la respuesta de Web3Forms en la mano, y no al pulsar
+      // el botón: así `contacto_enviado` significa "el correo salió de verdad" y
+      // no "alguien lo intentó". Si se contara en el clic, los envíos fallidos
+      // inflarían el número de mensajes recibidos y no cuadraría nunca con la
+      // bandeja de entrada.
+      //
+      // `asunto` distingue si el interés es de una marca o de alguien normal, y
+      // es justo lo que no se puede deducir mirando solo el número total.
+      evento(json.success ? EVENTOS.CONTACTO_ENVIADO : EVENTOS.CONTACTO_ERROR, {
+        asunto: data.asunto,
+      })
     } catch {
       setStatus('error')
+
+      // El `catch` salta cuando no hubo respuesta: sin internet, Web3Forms caído
+      // o un bloqueador. Se mide aparte porque es el caso más peligroso de
+      // todos: la persona escribió, se llevó un error y tú no te enteras de que
+      // existió. Si este evento sube, hay mensajes perdiéndose.
+      evento(EVENTOS.CONTACTO_ERROR, { asunto: data.asunto, motivo: 'sin_respuesta' })
     }
   }
 

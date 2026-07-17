@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router'
 import SmoothScroll from './components/SmoothScroll'
 import Seo from './seo/Seo'
+import Analytics from './analytics/Analytics'
 import { ContactProvider } from './components/ContactModal'
 import Home from './pages/Home'
 import QuienSoy from './pages/QuienSoy'
@@ -14,6 +15,7 @@ function App() {
     <SmoothScroll>
       <ContactProvider>
         <Seo />
+        <Analytics />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/quien-soy" element={<QuienSoy />} />
