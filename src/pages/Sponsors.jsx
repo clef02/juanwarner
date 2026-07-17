@@ -6,6 +6,7 @@ import { ArrowRight, BadgeCheck, Download, Mail } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { SPONSORS } from '../data/sponsors'
+import { evento, EVENTOS } from '../analytics/ga'
 import heroImg from '../assets/creador.webp'
 import introImg from '../assets/info1.webp'
 import kitImg from '../assets/juan2.webp'
@@ -97,9 +98,14 @@ function Sponsors() {
                 </p>
               </div>
 
+              {/* `zona` separa este botón del gemelo que hay más abajo. Los dos
+                  descargan el mismo PDF, así que sin distinguirlos el informe
+                  diría "20 descargas" sin decir si la gente se convence nada más
+                  entrar o si necesita leerse la página entera antes. */}
               <a
                 href={mediaKitPdf}
                 download="Juan Wagner - Media Kit 2026.pdf"
+                onClick={() => evento(EVENTOS.MEDIA_KIT_DESCARGA, { zona: 'hero' })}
                 className="cta group inline-flex w-max -skew-x-12 items-center gap-2 bg-brand px-8 py-4 text-ink transition-colors duration-200 hover:bg-brand-bright"
               >
                 <span className="flex skew-x-12 items-center gap-2 text-sm font-semibold uppercase tracking-wider">
@@ -273,7 +279,17 @@ function Sponsors() {
                   <a
                     href={mediaKitPdf}
                     download="Juan Wagner - Media Kit 2026.pdf"
-                    className="cta group relative inline-flex w-max items-center gap-2 rounded-full bg-gradient-to-r from-brand-bright to-brand px-8 py-4 text-sm font-bold uppercase tracking-wider text-ink shadow-lg shadow-brand/20 transition-transform duration-200 hover:scale-[1.02]"
+                    onClick={() => evento(EVENTOS.MEDIA_KIT_DESCARGA, { zona: 'documento_completo' })}
+                    // `self-start` y NO `w-max`: los dos hacen que el botón se
+                    // ajuste al texto en vez de estirarse a lo ancho de la
+                    // columna, pero `w-max` le prohíbe encogerse nunca. Este
+                    // botón mide 250px y vive dentro de un tile con `p-8`: 314px
+                    // que a 320px de pantalla no caben en los 272px útiles. Como
+                    // las celdas de un grid no se encogen por debajo de su
+                    // contenido, estiraba la rejilla entera y sacaba un scroll
+                    // horizontal en TODA la página. Con `self-start` se ajusta
+                    // igual, pero si no cabe parte el texto en dos líneas.
+                    className="cta group relative inline-flex self-start items-center gap-2 rounded-full bg-gradient-to-r from-brand-bright to-brand px-8 py-4 text-sm font-bold uppercase tracking-wider text-ink shadow-lg shadow-brand/20 transition-transform duration-200 hover:scale-[1.02]"
                   >
                     <Download className="h-4 w-4" />
                     Descargar media kit

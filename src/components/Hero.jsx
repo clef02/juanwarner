@@ -135,11 +135,21 @@ function Hero() {
 
         {/* Abajo: CTAs (en una fila) + redes */}
         <div className="w-full max-w-2xl sm:mt-9 sm:w-auto">
-          {/* CTAs */}
-          <div className="flex items-center justify-center gap-3 sm:justify-start sm:gap-4">
+          {/* CTAs — una fila; si no caben, el segundo baja solo.
+              `flex-wrap` en vez de un breakpoint: por debajo de ~350px los dos
+              botones necesitan 325px y solo hay 272, así que no caben de ninguna
+              manera. Sin esto el flex los encogía y "Trabaja conmigo" partía en
+              dos líneas, dejando un botón de 58px junto a otro de 42. Al
+              envolver, cada uno conserva su tamaño y quedan centrados.
+              Ojo al `px-4` de los botones: son 8px menos que antes por botón, y
+              son los que hacen que en 360px —el Android más común— sigan cabiendo
+              en una sola fila. Con el `px-5` de antes sumaban 325 y se salían 13px
+              del contenedor (no se veía porque los tapaba el padding del hero),
+              pero con `flex-wrap` eso ya no se disimula: se envolverían. */}
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:flex-nowrap sm:justify-start sm:gap-4">
             <a
               href="/quien-soy"
-              className="cta anim-cta group inline-flex -skew-x-12 items-center gap-2 border border-transparent bg-brand px-5 py-3 font-semibold uppercase tracking-wider text-ink transition-colors duration-200 hover:bg-brand-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-bright focus-visible:ring-offset-2 focus-visible:ring-offset-ink sm:px-7 sm:py-3.5"
+              className="cta anim-cta group inline-flex -skew-x-12 items-center gap-2 border border-transparent bg-brand px-4 py-3 font-semibold uppercase tracking-wider text-ink transition-colors duration-200 hover:bg-brand-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-bright focus-visible:ring-offset-2 focus-visible:ring-offset-ink sm:px-7 sm:py-3.5"
             >
               <span className="flex skew-x-12 items-center gap-2 text-xs sm:text-sm">
                 Conóceme
@@ -149,7 +159,7 @@ function Hero() {
             <button
               type="button"
               onClick={() => openContact('marca')}
-              className="anim-cta group inline-flex -skew-x-12 items-center border border-white/25 px-5 py-3 text-bone transition-colors duration-200 hover:border-white hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink sm:px-7 sm:py-3.5"
+              className="anim-cta group inline-flex -skew-x-12 items-center border border-white/25 px-4 py-3 text-bone transition-colors duration-200 hover:border-white hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink sm:px-7 sm:py-3.5"
             >
               <span className="skew-x-12 text-xs font-semibold uppercase tracking-wider sm:text-sm">
                 Trabaja conmigo
