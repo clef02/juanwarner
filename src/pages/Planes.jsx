@@ -17,9 +17,10 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import VideoCTA from '../components/VideoCTA'
 import { useContact } from '../components/ContactModal'
+import { evento, EVENTOS } from '../analytics/ga'
 import { FAQ } from '../data/faq'
 import heroImg from '../assets/info2.webp'
-import encasaImg from '../assets/encasa.webp'
+import pesaImg from '../assets/pesa.webp'
 import entrenaImg from '../assets/entrena.webp'
 import controlImg from '../assets/control.webp'
 import comerImg from '../assets/comer.webp'
@@ -38,8 +39,13 @@ const RUTINA = {
       icon: Home,
       title: 'Entrena donde te quede mejor',
       text: 'Ya sea en el gimnasio o en casa, tú decides dónde entrenar. Las dos opciones están disponibles para adaptarse a tu rutina.',
-      img: encasaImg,
-      pos: 'object-bottom',
+      // Sin `pos`: se encuadra al centro, que es donde caen la cara y la
+      // mancuerna. La foto es vertical (5155x7729) y el marco es apaisado, así
+      // que se recorta casi la mitad del alto: con `object-bottom` —lo que había
+      // aquí para la foto anterior, que tenía las pesas en el suelo— el recorte
+      // se quedaba en el pantalón y el banco, sin cabeza y con la mancuerna
+      // partida.
+      img: pesaImg,
     },
     {
       icon: Repeat,
@@ -584,6 +590,20 @@ function Planes() {
                       href={ctaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      // El checkout está en otro dominio, así que este clic es lo
+                      // último que se ve de esta persona: a partir de aquí, si
+                      // compra o se arrepiente ya no lo cuenta esta web. Se
+                      // guardan la divisa y el período porque son la razón de ser
+                      // de los dos selectores de arriba: sin ellos no hay forma de
+                      // responder si la gente elige mensual o trimestral, ni si el
+                      // selector de moneda sirve de algo o sobra.
+                      onClick={() =>
+                        evento(EVENTOS.PLAN_CLIC, {
+                          plan: p.name,
+                          moneda: currency,
+                          periodo: p.prices.length > 1 ? p.prices[period].label : 'unico',
+                        })
+                      }
                       className={`cta mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-center text-sm font-semibold uppercase tracking-wider transition-colors ${
                         p.featured
                           ? 'bg-ink text-bone hover:bg-ink/85'
