@@ -85,18 +85,29 @@ function Hero() {
       </div>
 
       {/* ---- Juan (recorte con fondo transparente, centrado) ----
-           En móvil bajo NO se mide en svh, sino como "lo que sobra": está
-           anclado abajo, así que con `100svh - 200px` su cabeza queda siempre a
-           200px del borde superior — justo debajo del bloque de texto, que mide
-           unos 180px fijos. El truco es que el texto va en píxeles y no en svh:
-           por eso fijar la cabeza en píxeles cuadra a cualquier altura, mientras
-           que un porcentaje solo acierta en una. Y de paso Juan sale lo más
-           grande que quepa. Ver `movil-bajo` en index.css. */}
+           En móvil su altura NO se mide en svh, sino como "lo que sobra": está
+           anclado abajo, así que con `100svh - Npx` su cabeza queda siempre a N
+           píxeles del borde superior. El truco es que el bloque de texto también
+           mide en píxeles (no en svh), así que su borde inferior cae SIEMPRE a la
+           misma altura pase lo que pase con la pantalla. Fijar la cabeza en
+           píxeles la mantiene justo debajo de ese borde a cualquier altura;
+           medirla en svh (como estaba, `70svh`) solo acertaba en una altura
+           concreta y en el resto la subía hasta chocar con el texto —que es lo
+           que pasaba en muchos Android, donde la barra del navegador deja el alto
+           en la franja de los 730-800px—.
+
+           Son dos reservas porque hay dos tamaños de texto:
+             · móvil normal: 260px (texto grande, 3 líneas → borde inferior ~262).
+             · movil-bajo (pantalla corta): 200px, porque ahí el texto se achica
+               (text-xs, menos padding) y ocupa menos. Ver `movil-bajo` en
+               index.css.
+           Con menos reserva Juan sale más grande, así que en movil-bajo, que es
+           donde falta sitio, es también donde más grande se le deja caber. */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] flex translate-x-0 translate-y-0 justify-center sm:translate-x-[9%] sm:translate-y-[9svh] lg:translate-y-[14svh]">
         <img
           src={juanImg}
           alt="Juan Wagner, creador de contenido y entrenador en línea"
-          className="hero-juan h-[70svh] w-auto max-w-none drop-shadow-2xl movil-bajo:h-[calc(100svh-200px)] sm:h-[86svh] lg:h-[104svh]"
+          className="hero-juan h-[calc(100svh-260px)] w-auto max-w-none drop-shadow-2xl movil-bajo:h-[calc(100svh-200px)] sm:h-[86svh] lg:h-[104svh]"
         />
       </div>
 
