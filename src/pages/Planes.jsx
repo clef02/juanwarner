@@ -628,6 +628,14 @@ function Planes() {
                 )
               })}
             </div>
+
+            {/* Aviso de conversión — los planes de Entrenamiento y Nutrición se
+                cobran siempre en USD; esto aclara que el cambio a la moneda
+                local se aplica al momento de pagar. */}
+            <p className="mt-10 text-center text-xs leading-relaxed text-graphite">
+              La conversión a la moneda de tu país se verá reflejada en el
+              momento previo a efectuar el pago.
+            </p>
           </div>
         </section>
 
