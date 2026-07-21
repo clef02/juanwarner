@@ -637,6 +637,13 @@ function Planes() {
                 )
               })}
             </div>
+
+            {/* Aviso de conversión — repetido bajo la grilla para que se vea sin
+                tener que mirar cada tarjeta. */}
+            <p className="mt-10 text-center text-xs leading-relaxed text-graphite">
+              La conversión a la moneda de tu país se verá reflejada en el
+              momento previo a efectuar el pago.
+            </p>
           </div>
         </section>
 
