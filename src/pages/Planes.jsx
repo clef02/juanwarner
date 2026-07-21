@@ -527,29 +527,38 @@ function Planes() {
                       </span>
                     </div>
                   ) : (
-                    <div className="mt-6 space-y-2">
-                      {p.prices.map((pr, i) => (
-                        <div key={i} className="flex flex-wrap items-baseline gap-x-2">
-                          {pr.label && (
-                            <span className="text-xs font-semibold uppercase tracking-wide text-brand">
-                              {pr.label}
+                    <div className="mt-6">
+                      <div className="space-y-2">
+                        {p.prices.map((pr, i) => (
+                          <div key={i} className="flex flex-wrap items-baseline gap-x-2">
+                            {pr.label && (
+                              <span className="text-xs font-semibold uppercase tracking-wide text-brand">
+                                {pr.label}
+                              </span>
+                            )}
+                            <span className="font-display text-5xl font-bold leading-none lg:text-6xl">
+                              {symbol}
+                              {pr.amount[currency] ?? pr.amount.USD}
                             </span>
-                          )}
-                          <span className="font-display text-5xl font-bold leading-none lg:text-6xl">
-                            {symbol}
-                            {pr.amount[currency] ?? pr.amount.USD}
-                          </span>
-                          {/* Etiqueta USD para precios que solo existen en dólares */}
-                          {Object.keys(pr.amount).length === 1 && (
-                            <span className="text-xs font-semibold uppercase tracking-wide text-brand">
-                              USD
+                            {/* Etiqueta USD para precios que solo existen en dólares */}
+                            {Object.keys(pr.amount).length === 1 && (
+                              <span className="text-xs font-semibold uppercase tracking-wide text-brand">
+                                USD
+                              </span>
+                            )}
+                            <span className="text-xs font-semibold uppercase tracking-wide text-bone/50">
+                              {pr.note}
                             </span>
-                          )}
-                          <span className="text-xs font-semibold uppercase tracking-wide text-bone/50">
-                            {pr.note}
-                          </span>
-                        </div>
-                      ))}
+                          </div>
+                        ))}
+                      </div>
+                      {/* Aviso de conversión — estos planes se cobran siempre en
+                          USD; aclara que el cambio a la moneda local se refleja
+                          justo antes de pagar. Va igual en los dos planes. */}
+                      <p className="mt-3 text-xs leading-relaxed text-bone/50">
+                        La conversión a la moneda de tu país se verá reflejada en
+                        el momento previo a efectuar el pago.
+                      </p>
                     </div>
                   )}
 
@@ -628,14 +637,6 @@ function Planes() {
                 )
               })}
             </div>
-
-            {/* Aviso de conversión — los planes de Entrenamiento y Nutrición se
-                cobran siempre en USD; esto aclara que el cambio a la moneda
-                local se aplica al momento de pagar. */}
-            <p className="mt-10 text-center text-xs leading-relaxed text-graphite">
-              La conversión a la moneda de tu país se verá reflejada en el
-              momento previo a efectuar el pago.
-            </p>
           </div>
         </section>
 
